@@ -9,6 +9,9 @@ public class UsersTable implements BaseColumns {
     public static final String COLUMN_NAME_LOGINED = "logined";
     public static final String COLUMN_NAME_ETPWD = "etpwd";
     public static final String COLUMN_NAME_ETTAG = "ettag";
+    public static final String COLUMN_NAME_INDPWD = "indpwd";
+    public static final String COLUMN_NAME_DIRPWD = "dirpwd";
+    public static final String COLUMN_NAME_GESPWD = "gespwd";
     public UsersTable(String username, String password) {
         this.username = username;
         this.password = password;
@@ -20,4 +23,7 @@ public class UsersTable implements BaseColumns {
     public String logined = "0";
     public String etpwd = "";
     public String ettag = "1";
+    public String indpwd = "";
+    public String dirpwd = "";
+    public String gespwd = "";
 }

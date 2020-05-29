@@ -2,6 +2,7 @@ package com.hqt.eyetrackingidentityauthentication;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -12,6 +13,9 @@ import com.hqt.eyetrackingidentityauthentication.sqlite.ETDBHelper;
 import com.hqt.eyetrackingidentityauthentication.sqlite.SqliteImplementer;
 import com.hqt.eyetrackingidentityauthentication.sqlite.UsersTable;
 
+import java.math.BigInteger;
+import java.security.MessageDigest;
+
 public class ComfirmEtActivity extends AppCompatActivity {
     TextView txt_comfirm_showpwd1, txt_comfirm_showpwd2, txt_comfirm_showpwd3, txt_comfirm_showpwd4;
     String password = "";
@@ -21,7 +25,7 @@ public class ComfirmEtActivity extends AppCompatActivity {
     private float rawX ;
     private float rawY ;
     boolean flag = true;
-    int num1, num2, num3, num4, num5, num6, num7, num8, num9, num0, num_close, num_cancel;
+    int num1, num2, num3, num4, num5, num6, num7, num8, num9, num0, num_close, num_cancel, num_mistake;
     @SuppressLint("HandlerLeak")
     Handler handler = new Handler(){
         @Override
@@ -883,14 +887,35 @@ public class ComfirmEtActivity extends AppCompatActivity {
     }
     void checkPwd(){
         UsersTable user = sqliteImplementer.getLoginedUser();
-        if(password.equals(user.etpwd)){
-            setResult(0x111);
+        String pwd = getMD5String(password);
+        if(pwd.equals(user.etpwd)){
+            setResult(111);
             finish();
         }else{
             Toast.makeText(ComfirmEtActivity.this, "眼动密码错误", Toast.LENGTH_SHORT).show();
             number = 0;
             password = "";
             showPwdNum();
+            num_mistake++;
+            if(num_mistake == 3){
+                Intent intent = new Intent(ComfirmEtActivity.this, HumanCheckActivity.class);
+                startActivityForResult(intent,111);
+            }
+        }
+    }
+    public static String getMD5String(String str) {
+        try {
+            // 生成一个MD5加密计算摘要
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            // 计算md5函数
+            md.update(str.getBytes());
+            // digest()最后确定返回md5 hash值，返回值为8位字符串。因为md5 hash值是16位的hex值，实际上就是8位的字符
+            // BigInteger函数则将8位的字符串转换成16位hex值，用字符串来表示；得到字符串形式的hash值
+            //一个byte是八位二进制，也就是2位十六进制字符（2的8次方等于16的2次方）
+            return new BigInteger(1, md.digest()).toString(16);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
         }
     }
     @Override
@@ -898,5 +923,16 @@ public class ComfirmEtActivity extends AppCompatActivity {
         rawX = ev.getRawX();
         rawY = ev.getRawY();
         return super.dispatchTouchEvent(ev);
+    }
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 111 && resultCode == 111) {
+            num_mistake = 0;
+        }
+        if (requestCode == 111 && resultCode == 112) {
+            Intent intent = new Intent(ComfirmEtActivity.this, HumanCheckActivity.class);
+            startActivityForResult(intent,111);
+        }
     }
 }

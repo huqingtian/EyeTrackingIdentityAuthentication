@@ -42,9 +42,7 @@
                 android:layout_marginStart="20dp"
                 android:src="@drawable/img_other"/>
         </LinearLayout>
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="fill_parent">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -54,6 +52,7 @@
                     android:layout_height="60dp"
                     android:src="@drawable/img_search"/>
                 <FrameLayout
+                    android:id="@+id/fl_message1"
                     android:layout_width="match_parent"
                     android:layout_height="80dp">
                     <ImageView
@@ -78,9 +77,10 @@
                         android:background="#FFFFFF"
                         android:textColor="#000000"
                         android:textSize="20sp"
-                        android:text="用户一"/>
+                        android:text="查看聊天记录-独立密码"/>
                 </FrameLayout>
                 <FrameLayout
+                    android:id="@+id/fl_message2"
                     android:layout_width="match_parent"
                     android:layout_height="80dp">
                     <ImageView
@@ -105,7 +105,7 @@
                         android:background="#FFFFFF"
                         android:textColor="#000000"
                         android:textSize="20sp"
-                        android:text="用户二"/>
+                        android:text="人机校验一"/>
                 </FrameLayout>
                 <FrameLayout
                     android:layout_width="match_parent"
@@ -132,7 +132,7 @@
                         android:background="#FFFFFF"
                         android:textColor="#000000"
                         android:textSize="20sp"
-                        android:text="用户三"/>
+                        android:text="人机校验二"/>
                 </FrameLayout>
                 <FrameLayout
                     android:layout_width="match_parent"
@@ -159,7 +159,7 @@
                         android:background="#FFFFFF"
                         android:textColor="#000000"
                         android:textSize="20sp"
-                        android:text="用户四"/>
+                        android:text="方向密码"/>
                 </FrameLayout>
                 <FrameLayout
                     android:layout_width="match_parent"
@@ -186,7 +186,7 @@
                         android:background="#FFFFFF"
                         android:textColor="#000000"
                         android:textSize="20sp"
-                        android:text="用户五"/>
+                        android:text="手势密码"/>
                 </FrameLayout>
                 <FrameLayout
                     android:layout_width="match_parent"
@@ -297,6 +297,5 @@
                         android:text="用户九"/>
                 </FrameLayout>
             </LinearLayout>
-        </ScrollView>
     </LinearLayout>
 </FrameLayout>

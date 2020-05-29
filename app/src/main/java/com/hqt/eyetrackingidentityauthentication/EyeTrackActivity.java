@@ -18,6 +18,8 @@ import com.hqt.eyetrackingidentityauthentication.sqlite.ETDBHelper;
 import com.hqt.eyetrackingidentityauthentication.sqlite.SqliteImplementer;
 import com.hqt.eyetrackingidentityauthentication.sqlite.UsersTable;
 
+import java.math.BigInteger;
+import java.security.MessageDigest;
 import java.util.List;
 
 public class EyeTrackActivity extends AppCompatActivity {
@@ -30,7 +32,7 @@ public class EyeTrackActivity extends AppCompatActivity {
     private float rawX ;
     private float rawY ;
     boolean flag = true;
-    int num1, num2, num3, num4, num5, num6, num7, num8, num9, num0, num_close, num_cancel;
+    int num1, num2, num3, num4, num5, num6, num7, num8, num9, num0, num_close, num_cancel, num_mistake;
     @SuppressLint("HandlerLeak")
     Handler handler = new Handler(){
         @Override
@@ -911,7 +913,7 @@ public class EyeTrackActivity extends AppCompatActivity {
     }
     void checkPwd(){
         if(tag_EtPwd == 0){
-            if(user.etpwd.equals(password)){
+            if(user.etpwd.equals(getMD5String(password))){
                 finish();
                 number = 0;
                 password = "";
@@ -921,9 +923,15 @@ public class EyeTrackActivity extends AppCompatActivity {
                 number = 0;
                 password = "";
                 showPwdNum();
+                num_mistake++;
+                if(num_mistake == 3){
+                    Intent intent = new Intent(EyeTrackActivity.this, HumanCheckActivity.class);
+                    startActivityForResult(intent,111);
+                }
             }
         }else{
-            sqliteImplementer.changeETPwd(user.username, password);
+            String pwd = getMD5String(password);
+            sqliteImplementer.changeETPwd(user.username, pwd);
             finish();
         }
     }
@@ -932,5 +940,31 @@ public class EyeTrackActivity extends AppCompatActivity {
         rawX = ev.getRawX();
         rawY = ev.getRawY();
         return super.dispatchTouchEvent(ev);
+    }
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 111 && resultCode == 111) {
+            num_mistake = 0;
+        }
+        if (requestCode == 111 && resultCode == 112) {
+            Intent intent = new Intent(EyeTrackActivity.this, HumanCheckActivity.class);
+            startActivityForResult(intent,111);
+        }
+    }
+    public static String getMD5String(String str) {
+        try {
+            // 生成一个MD5加密计算摘要
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            // 计算md5函数
+            md.update(str.getBytes());
+            // digest()最后确定返回md5 hash值，返回值为8位字符串。因为md5 hash值是16位的hex值，实际上就是8位的字符
+            // BigInteger函数则将8位的字符串转换成16位hex值，用字符串来表示；得到字符串形式的hash值
+            //一个byte是八位二进制，也就是2位十六进制字符（2的8次方等于16的2次方）
+            return new BigInteger(1, md.digest()).toString(16);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }

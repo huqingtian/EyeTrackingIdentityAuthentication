@@ -9,7 +9,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".ComfirmEtActivity"></activity>
+        <activity android:name=".GesturePwdActivity"></activity>
+        <activity android:name=".DirectionPwdActivity" />
+        <activity android:name=".CalculationActivity" />
+        <activity android:name=".InputActivity" />
+        <activity android:name=".HumanCheckActivity" />
+        <activity android:name=".ChatHisActivity" />
+        <activity android:name=".IndependentPwdActivity" />
+        <activity android:name=".ComfirmEtActivity" />
         <activity android:name=".ChangeEtPwdActivity" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".EyeTrackActivity" />

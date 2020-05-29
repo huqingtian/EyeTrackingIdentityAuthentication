@@ -51,5 +51,6 @@
         android:textColor="#FFFFFF"
         android:textSize="20sp"
         android:radius="15dip"
+        android:clickable="false"
         android:background="@drawable/btn_shape"/>
 </LinearLayout>

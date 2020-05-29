@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    android:id="@+id/fl_humancheck"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
+    <ImageView
+        android:id="@+id/img_hc"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_marginTop="80dp"
+        android:src="@drawable/img_human_check1"
+        />
+    <ImageView
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="100dp"
+        android:layout_gravity="left|center"
+        android:src="@drawable/img_refresh"/>
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="105dp"
+        android:layout_gravity="right|center"
+        android:src="@drawable/img_close"/>
+</FrameLayout>

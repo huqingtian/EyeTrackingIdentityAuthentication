@@ -36,9 +36,7 @@
                 android:layout_marginStart="145dp"
                 android:src="@drawable/img_addfriend"/>
         </LinearLayout>
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="fill_parent">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -367,6 +365,5 @@
                         android:text="分组十    "/>
                 </FrameLayout>
             </LinearLayout>
-        </ScrollView>
     </LinearLayout>
 </FrameLayout>

@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class ETDBHelper extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "eyetrack.db";
-    public static final int DATABASE_VERSION = 1;
+    public static final int DATABASE_VERSION = 3;
     private static final String SQL_CREATE_ENTRIES =
             "CREATE TABLE " + UsersTable.TABLE_NAME + " (" +
                     UsersTable._ID + " INTEGER PRIMARY KEY," +
@@ -14,7 +14,10 @@ public class ETDBHelper extends SQLiteOpenHelper {
                     UsersTable.COLUMN_NAME_PASSWORD + " TEXT," +
                     UsersTable.COLUMN_NAME_LOGINED + " TEXT," +
                     UsersTable.COLUMN_NAME_ETPWD + " TEXT," +
-                    UsersTable.COLUMN_NAME_ETTAG + " TEXT)";
+                    UsersTable.COLUMN_NAME_ETTAG + " TEXT," +
+                    UsersTable.COLUMN_NAME_INDPWD + " TEXT," +
+                    UsersTable.COLUMN_NAME_DIRPWD + " TEXT," +
+                    UsersTable.COLUMN_NAME_GESPWD + " TEXT)";
     public static final String SQL_DELETE_ENTRIES =
             "DROP TABLE IF EXISTS " + UsersTable.TABLE_NAME;
     public ETDBHelper(Context context) {
