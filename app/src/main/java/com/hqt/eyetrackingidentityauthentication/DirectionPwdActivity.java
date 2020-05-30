@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.view.MotionEvent;
+import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -42,7 +43,7 @@ public class DirectionPwdActivity extends AppCompatActivity {
         user = sqliteImplementer.getLoginedUser();
         if(user.dirpwd == null){
             hav_dirPwd = false;
-            AlertDialog alertDialog = new AlertDialog.Builder(DirectionPwdActivity.this).create();
+            AlertDialog alertDialog = new AlertDialog.Builder(DirectionPwdActivity.this).setCancelable(false).create();
             alertDialog.setIcon(R.drawable.img_warning);
             alertDialog.setTitle("提示");
             alertDialog.setMessage("此次为您第一次登陆，请创建您的方向密码");

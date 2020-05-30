@@ -15,26 +15,26 @@
         android:textSize="40dp"
         android:text="请选择第一个方向"/>
     <TextView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:layout_gravity="center|top"
         android:layout_marginTop="150dp"
         android:background="@drawable/eyetrackpwd_shape"/>
     <TextView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:layout_gravity="center|left"
         android:layout_marginLeft="20dp"
         android:background="@drawable/eyetrackpwd_shape"/>
     <TextView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:layout_gravity="center|right"
         android:layout_marginRight="20dp"
         android:background="@drawable/eyetrackpwd_shape"/>
     <TextView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:layout_gravity="center|bottom"
         android:layout_marginBottom="150dp"
         android:background="@drawable/eyetrackpwd_shape"/>

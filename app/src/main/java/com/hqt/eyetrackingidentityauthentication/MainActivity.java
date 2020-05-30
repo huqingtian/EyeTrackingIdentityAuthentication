@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     private float rawX;
     private float rawY;
     boolean flag1 = true, flag4 = true, flag = true;
-    int num_message, num_contacts, num_focus, num_setting, num_ind, num_cal,num_pic, num_dir, num_pwd, num_exit;
+    int num_message, num_contacts, num_focus, num_setting, num_ind, num_cal,num_pic, num_dir, num_pwd, num_exit, num_ges, num_reset;
     SqliteImplementer sqliteImplementer;
     ETDBHelper etdbHelper = new ETDBHelper(this);
     UsersTable user;
@@ -256,7 +256,6 @@ public class MainActivity extends AppCompatActivity {
     public boolean dispatchTouchEvent(MotionEvent ev) {
         rawX = ev.getRawX();
         rawY = ev.getRawY();
-      //  System.out.println(rawX+"--"+rawY);
         return super.dispatchTouchEvent(ev);
     }
     @SuppressLint("HandlerLeak")
@@ -286,6 +285,11 @@ public class MainActivity extends AppCompatActivity {
                         Message message = Message.obtain();
                         message.what = 1;
                         handler_dir.sendMessageDelayed(message,300);
+                    }else if(rawX >= 0 && rawX <= 1430 && rawY >= 1600 && rawY <= 1800){
+                        flag1 = false;
+                        Message message = Message.obtain();
+                        message.what = 1;
+                        handler_ges.sendMessageDelayed(message,300);
                     }
                     Message message = Message.obtain();
                     message.what = 1;
@@ -306,6 +310,11 @@ public class MainActivity extends AppCompatActivity {
                         Message message = Message.obtain();
                         message.what = 1;
                         handler_pwd.sendMessageDelayed(message,0);
+                    }else if(rawX >= 0 && rawX <= 1430 && rawY >= 1300 && rawY <= 1520){
+                        flag4 = false;
+                        Message message = Message.obtain();
+                        message.what = 1;
+                        handler_reset.sendMessageDelayed(message,0);
                     }else if(rawX >= 0 && rawX <= 1430 && rawY >= 1830 && rawY <= 2030){
                         flag4 = false;
                         Message message = Message.obtain();
@@ -759,6 +768,45 @@ public class MainActivity extends AppCompatActivity {
         }
     };
     @SuppressLint("HandlerLeak")
+    Handler handler_ges = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            if(msg.what == 1){
+                if(num_ges == 0){
+                    num_ges++;
+                    Message message = Message.obtain();
+                    message.what = 1;
+                    handler_ges.sendMessageDelayed(message,250);
+                }else if(num_ges == 1){
+                    if(rawX >= 0 && rawX <= 1430 && rawY >= 1600 && rawY <= 1800) {
+                        num_ges++;
+                        Message message = Message.obtain();
+                        message.what = 1;
+                        handler_ges.sendMessageDelayed(message,250);
+                    }else{
+                        num_ges = 0;
+                        flag1 = true;
+                        Message message = Message.obtain();
+                        message.what = 1;
+                        handler1.sendMessageDelayed(message,0);
+                    }
+                }else {
+                    if(rawX >= 0 && rawX <= 1430 && rawY >= 1600 && rawY <= 1800) {
+                        Intent intent = new Intent(MainActivity.this, GesturePwdActivity.class);
+                        startActivityForResult(intent,114);
+                    }else{
+                        num_ges = 0;
+                        flag1 = true;
+                        Message message = Message.obtain();
+                        message.what = 1;
+                        handler1.sendMessageDelayed(message,0);
+                    }
+                }
+            }
+        }
+    };
+    @SuppressLint("HandlerLeak")
     Handler handler_pwd = new Handler(){
         @Override
         public void handleMessage(Message msg) {
@@ -788,6 +836,45 @@ public class MainActivity extends AppCompatActivity {
                         startActivityForResult(intent,141);
                     }else{
                         num_pwd = 0;
+                        flag4 = true;
+                        Message message = Message.obtain();
+                        message.what = 1;
+                        handler4.sendMessageDelayed(message,0);
+                    }
+                }
+            }
+        }
+    };
+    @SuppressLint("HandlerLeak")
+    Handler handler_reset = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            if(msg.what == 1){
+                if(num_reset == 0){
+                    num_reset++;
+                    Message message = Message.obtain();
+                    message.what = 1;
+                    handler_reset.sendMessageDelayed(message,250);
+                }else if(num_reset == 1){
+                    if(rawX >= 0 && rawX <= 1430 && rawY >= 1300 && rawY <= 1520) {
+                        num_reset++;
+                        Message message = Message.obtain();
+                        message.what = 1;
+                        handler_reset.sendMessageDelayed(message,250);
+                    }else{
+                        num_reset = 0;
+                        flag4 = true;
+                        Message message = Message.obtain();
+                        message.what = 1;
+                        handler4.sendMessageDelayed(message,0);
+                    }
+                }else {
+                    if(rawX >= 0 && rawX <= 1430 && rawY >= 1300 && rawY <= 1520) {
+                        Intent intent = new Intent(MainActivity.this, ResetPwdActivity.class);
+                        startActivityForResult(intent,141);
+                    }else{
+                        num_reset = 0;
                         flag4 = true;
                         Message message = Message.obtain();
                         message.what = 1;
