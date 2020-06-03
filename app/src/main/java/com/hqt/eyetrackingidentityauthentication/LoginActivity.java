@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.text.InputType;
 import android.view.MotionEvent;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -26,6 +27,7 @@ public class LoginActivity extends AppCompatActivity {
     SqliteImplementer sqliteImplementer;
     ETDBHelper etdbHelper = new ETDBHelper(this);
     UsersTable user;
+    String pwd = "";
     @SuppressLint("HandlerLeak")
     Handler handler = new Handler(){
         @Override
@@ -71,13 +73,13 @@ public class LoginActivity extends AppCompatActivity {
                     num_username++;
                     Message message = Message.obtain();
                     message.what = 1;
-                    handler_username.sendMessageDelayed(message,250);
+                    handler_username.sendMessageDelayed(message,350);
                 }else if(num_username == 1){
                     if(rawX >= 140 && rawX <= 1300 && rawY >= 940 && rawY <= 1040) {
                         num_username++;
                         Message message = Message.obtain();
                         message.what = 1;
-                        handler_username.sendMessageDelayed(message,250);
+                        handler_username.sendMessageDelayed(message,350);
                     }else{
                         num_username = 0;
                         flag = true;
@@ -87,6 +89,7 @@ public class LoginActivity extends AppCompatActivity {
                     }
                 }else {
                     if(rawX >= 140 && rawX <= 1300 && rawY >= 940 && rawY <= 1040) {
+                        num_username = 0;
                         Intent intent = new Intent(LoginActivity.this, InputActivity.class);
                         startActivityForResult(intent,111);
                     }else{
@@ -110,13 +113,13 @@ public class LoginActivity extends AppCompatActivity {
                     num_password++;
                     Message message = Message.obtain();
                     message.what = 1;
-                    handler_password.sendMessageDelayed(message,250);
+                    handler_password.sendMessageDelayed(message,350);
                 }else if(num_password == 1){
                     if(rawX >= 140 && rawX <= 1300 && rawY >= 1200 && rawY <= 1300) {
                         num_password++;
                         Message message = Message.obtain();
                         message.what = 1;
-                        handler_password.sendMessageDelayed(message,250);
+                        handler_password.sendMessageDelayed(message,350);
                     }else{
                         num_password = 0;
                         flag = true;
@@ -126,6 +129,7 @@ public class LoginActivity extends AppCompatActivity {
                     }
                 }else {
                     if(rawX >= 140 && rawX <= 1300 && rawY >= 1200 && rawY <= 1300) {
+                        num_password = 0;
                         Message message = Message.obtain();
                         message.what = 1;
                         Intent intent = new Intent(LoginActivity.this, InputActivity.class);
@@ -167,6 +171,7 @@ public class LoginActivity extends AppCompatActivity {
                     }
                 }else {
                     if(rawX >= 850 && rawX <= 1020 && rawY >= 2200 && rawY <= 2260) {
+                        num_register = 0;
                         Message message = Message.obtain();
                         message.what = 1;
                         Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
@@ -193,13 +198,13 @@ public class LoginActivity extends AppCompatActivity {
                     num_login++;
                     Message message = Message.obtain();
                     message.what = 1;
-                    handler_login.sendMessageDelayed(message,250);
+                    handler_login.sendMessageDelayed(message,350);
                 }else if(num_login == 1){
                     if(rawX >= 570 && rawX <= 810 && rawY >= 1560 && rawY <= 1820) {
                         num_login++;
                         Message message = Message.obtain();
                         message.what = 1;
-                        handler_login.sendMessageDelayed(message,250);
+                        handler_login.sendMessageDelayed(message,350);
                     }else{
                         num_login = 0;
                         flag = true;
@@ -209,6 +214,7 @@ public class LoginActivity extends AppCompatActivity {
                     }
                 }else {
                     if(rawX >= 570 && rawX <= 810 && rawY >= 1560 && rawY <= 1820) {
+                        num_login = 0;
                         Message message = Message.obtain();
                         message.what = 1;
                         login();
@@ -229,6 +235,8 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         edt_password = findViewById(R.id.edt_password);
         edt_username = findViewById(R.id.edt_username);
+        edt_password.setInputType(InputType.TYPE_NULL);
+        edt_username.setInputType(InputType.TYPE_NULL);
         sqliteImplementer = new SqliteImplementer(etdbHelper);
         user = sqliteImplementer.getLoginedUser();
         if(user != null){
@@ -259,19 +267,23 @@ public class LoginActivity extends AppCompatActivity {
         }
         if (requestCode == 112 && resultCode == 111) {
             String password = data.getStringExtra("key");
-            edt_password.setText(password);
+            String temp = "";
+            for(int i = 0; i < password.length(); i++){
+                temp += "●";
+            }
+            edt_password.setText(temp);
+            pwd = password;
         }
-        flag = true;
         rawX = 0;
         rawY = 0;
+        flag = true;
         Message message = Message.obtain();
         message.what = 1;
         handler.sendMessageDelayed(message,0);
     }
     void login(){
         String username = edt_username.getText().toString();
-        String password = edt_password.getText().toString();
-        password = getMD5String(password);
+        String password =  getMD5String(pwd);
         UsersTable table = sqliteImplementer.getUser(username);
         if(!"".equals(table.password)) {
             if (password.equals(table.password)) {

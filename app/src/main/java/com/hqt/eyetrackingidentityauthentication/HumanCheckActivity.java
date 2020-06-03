@@ -17,6 +17,7 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Random;
 
@@ -280,6 +281,7 @@ public class HumanCheckActivity extends AppCompatActivity {
                     }
                 }else {
                     if(rawX >= x + 120 && rawX <= x + 230 && rawY >= y + 530 && rawY <= y + 640) {
+                        Toast.makeText(HumanCheckActivity.this, "认证成功", Toast.LENGTH_SHORT).show();
                         setResult(111);
                         finish();
                     }else{

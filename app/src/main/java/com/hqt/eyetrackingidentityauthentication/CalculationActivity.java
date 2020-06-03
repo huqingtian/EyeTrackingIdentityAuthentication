@@ -186,6 +186,7 @@ public class CalculationActivity extends AppCompatActivity {
                     }
                 }else {
                     if(rawX >= 450 && rawX <= 970 && rawY >= 1290 && rawY <= 1530) {
+                        num_answer = 0;
                         Intent intent = new Intent(CalculationActivity.this, InputActivity.class);
                         startActivityForResult(intent,111);
                     }else{
@@ -206,6 +207,7 @@ public class CalculationActivity extends AppCompatActivity {
             inputAnswer = data.getStringExtra("key");
             if(isInteger(inputAnswer)){
                 if(answer == Integer.parseInt(inputAnswer)){
+                    Toast.makeText(CalculationActivity.this, "认证成功", Toast.LENGTH_SHORT).show();
                     setResult(111);
                     finish();
                 }else{

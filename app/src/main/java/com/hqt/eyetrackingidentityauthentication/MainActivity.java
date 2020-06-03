@@ -715,6 +715,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }else {
                     if(rawX >= 0 && rawX <= 1430 && rawY >= 1030 && rawY <= 1230) {
+                        num_pic = 0;
                         Intent intent = new Intent(MainActivity.this, HumanCheckActivity.class);
                         startActivityForResult(intent,113);
                     }else{
@@ -754,6 +755,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }else {
                     if(rawX >= 0 && rawX <= 1430 && rawY >= 1310 && rawY <= 1520) {
+                        num_dir = 0;
                         Intent intent = new Intent(MainActivity.this, DirectionPwdActivity.class);
                         startActivityForResult(intent,114);
                     }else{
@@ -793,6 +795,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }else {
                     if(rawX >= 0 && rawX <= 1430 && rawY >= 1600 && rawY <= 1800) {
+                        num_ges = 0;
                         Intent intent = new Intent(MainActivity.this, GesturePwdActivity.class);
                         startActivityForResult(intent,114);
                     }else{
@@ -832,6 +835,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }else {
                     if(rawX >= 0 && rawX <= 1430 && rawY >= 800 && rawY <= 1000) {
+                        num_pwd = 0;
                         Intent intent = new Intent(MainActivity.this, ChangePwdActivity.class);
                         startActivityForResult(intent,141);
                     }else{
@@ -871,6 +875,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }else {
                     if(rawX >= 0 && rawX <= 1430 && rawY >= 1300 && rawY <= 1520) {
+                        num_reset = 0;
                         Intent intent = new Intent(MainActivity.this, ResetPwdActivity.class);
                         startActivityForResult(intent,141);
                     }else{

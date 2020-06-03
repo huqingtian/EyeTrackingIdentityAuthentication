@@ -25,5 +25,4 @@ public class HumanCheckView extends View {
             bitmap.recycle();
         }
     }
-
 }

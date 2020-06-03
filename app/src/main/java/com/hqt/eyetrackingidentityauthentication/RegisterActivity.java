@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.text.Editable;
+import android.text.InputType;
 import android.text.TextWatcher;
 import android.view.MotionEvent;
 import android.view.View;
@@ -34,6 +35,7 @@ public class RegisterActivity extends AppCompatActivity {
     ETDBHelper etdbHelper = new ETDBHelper(this);
     EditText edt_password;
     EditText edt_username;
+    String pwd = "";
     TextView txt_tip;
     Drawable drawable;
     ColorStateList hintColor;
@@ -48,6 +50,8 @@ public class RegisterActivity extends AppCompatActivity {
         sqliteImplementer = new SqliteImplementer(etdbHelper);
         edt_password = findViewById(R.id.edt_password);
         edt_username = findViewById(R.id.edt_username);
+        edt_password.setInputType(InputType.TYPE_NULL);
+        edt_username.setInputType(InputType.TYPE_NULL);
         txt_tip = findViewById(R.id.txt_tip);
         drawable = edt_password.getBackground();
         hintColor = edt_password.getHintTextColors();
@@ -124,13 +128,12 @@ public class RegisterActivity extends AppCompatActivity {
             edt_password.setBackgroundResource(R.drawable.edt_shape);
             edt_password.setHintTextColor(Color.parseColor("#FF0000"));
         }else{
-            if(isLetterDigit(edt_password.getText().toString()) && edt_password.getText().toString().length() >= 8 && edt_password.getText().toString().length() <= 16){
+            if(isLetterDigit(pwd) && pwd.length() >= 8 && pwd.length() <= 16){
                 String username = edt_username.getText().toString();
-                String password = edt_password.getText().toString();
                 UsersTable user = sqliteImplementer.getUser(username);
                 if(user.password == null) {
-                    password = getMD5String(password);
-                    UsersTable table = new UsersTable(username, password);
+                    pwd = getMD5String(pwd);
+                    UsersTable table = new UsersTable(username, pwd);
                     table.ettag = "1";
                     sqliteImplementer.saveData(table);
                     Toast.makeText(RegisterActivity.this, "注册成功", Toast.LENGTH_SHORT).show();
@@ -168,7 +171,12 @@ public class RegisterActivity extends AppCompatActivity {
         }
         if (requestCode == 112 && resultCode == 111) {
             String password = data.getStringExtra("key");
-            edt_password.setText(password);
+            String temp = "";
+            for(int i = 0; i < password.length(); i++){
+                temp += "●";
+            }
+            edt_password.setText(temp);
+            pwd = password;
         }
         flag = true;
         rawX = 0;
@@ -177,6 +185,7 @@ public class RegisterActivity extends AppCompatActivity {
         message.what = 1;
         handler.sendMessageDelayed(message,0);
     }
+    @SuppressLint("HandlerLeak")
     Handler handler = new Handler(){
         @Override
         public void handleMessage(Message msg) {
@@ -232,6 +241,7 @@ public class RegisterActivity extends AppCompatActivity {
                     }
                 }else {
                     if(rawX >= 140 && rawX <= 1300 && rawY >= 940 && rawY <= 1040) {
+                        num_username = 0;
                         Intent intent = new Intent(RegisterActivity.this, InputActivity.class);
                         startActivityForResult(intent,111);
                     }else{
@@ -271,6 +281,7 @@ public class RegisterActivity extends AppCompatActivity {
                     }
                 }else {
                     if(rawX >= 140 && rawX <= 1300 && rawY >= 1200 && rawY <= 1300) {
+                        num_password = 0;
                         Intent intent = new Intent(RegisterActivity.this, InputActivity.class);
                         startActivityForResult(intent, 112);
                     }else{
@@ -310,6 +321,7 @@ public class RegisterActivity extends AppCompatActivity {
                     }
                 }else {
                     if(rawX >= 80 && rawX <= 1370 && rawY >= 1480 && rawY <= 1680) {
+                        num_register = 0;
                         register();
                     }else{
                         num_register = 0;

@@ -2978,6 +2978,7 @@ public class IndependentPwdActivity extends AppCompatActivity {
             }
         }else{
             if (sqliteImplementer.getIndPwd(user.username).equals(getMD5String(password))) {
+                Toast.makeText(IndependentPwdActivity.this, "认证成功", Toast.LENGTH_SHORT).show();
                 Intent intent2 = new Intent(IndependentPwdActivity.this, ChatHisActivity.class);
                 startActivity(intent2);
                 finish();

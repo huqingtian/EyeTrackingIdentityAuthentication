@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.text.Editable;
+import android.text.InputType;
 import android.text.TextWatcher;
 import android.view.MotionEvent;
 import android.view.View;
@@ -33,6 +34,7 @@ public class ChangeLoginPwdActivity extends AppCompatActivity {
     ImageView img_showpwd;
     EditText edt_oldpwd;
     EditText edt_newpwd;
+    String new_pwd = "", old_pwd = "";
     TextView txt_tip;
     SqliteImplementer sqliteImplementer;
     ETDBHelper etdbHelper = new ETDBHelper(this);
@@ -54,6 +56,8 @@ public class ChangeLoginPwdActivity extends AppCompatActivity {
         img_showpwd = findViewById(R.id.img_showpwd);
         edt_oldpwd = findViewById(R.id.edt_oldpwd);
         edt_newpwd = findViewById(R.id.edt_newpwd);
+        edt_oldpwd.setInputType(InputType.TYPE_NULL);
+        edt_newpwd.setInputType(InputType.TYPE_NULL);
         drawable = edt_newpwd.getBackground();
         hintColor = edt_newpwd.getHintTextColors();
         edt_oldpwd.addTextChangedListener(new TextWatcher() {
@@ -94,15 +98,21 @@ public class ChangeLoginPwdActivity extends AppCompatActivity {
     }
     void showpwd(){
         if(showTag){
-            img_showpwd.setImageResource(R.drawable.img_cbxunchecked);
-            edt_newpwd.setInputType(0x00000081);
-            edt_oldpwd.setInputType(0x00000081);
-            showTag = false;
-        }else{
             img_showpwd.setImageResource(R.drawable.img_cbxchecked);
-            edt_newpwd.setInputType(0x00000001);
-            edt_oldpwd.setInputType(0x00000001);
-            showTag = true;
+            edt_newpwd.setText(new_pwd);
+            edt_oldpwd.setText(old_pwd);
+        }else{
+            img_showpwd.setImageResource(R.drawable.img_cbxunchecked);
+            String temp = "";
+            for(int i = 0; i < old_pwd.length(); i++){
+                temp += "●";
+            }
+            edt_oldpwd.setText(temp);
+            temp = "";
+            for(int i = 0; i < new_pwd.length(); i++){
+                temp += "●";
+            }
+            edt_newpwd.setText(temp);
         }
     }
     void change(){
@@ -114,10 +124,9 @@ public class ChangeLoginPwdActivity extends AppCompatActivity {
             edt_newpwd.setBackgroundResource(R.drawable.edt_shape);
             edt_newpwd.setHintTextColor(Color.parseColor("#FF0000"));
         }else{
-            if(isLetterDigit(edt_newpwd.getText().toString()) && edt_newpwd.getText().toString().length() >= 8 && edt_newpwd.getText().toString().length() <= 16){
-                if(user.password.equals(getMD5String(edt_oldpwd.getText().toString()))){
-                    String password = edt_newpwd.getText().toString();
-                    sqliteImplementer.changeLoginPwd(user.username, getMD5String(password));
+            if(isLetterDigit(new_pwd) && new_pwd.length() >= 8 && new_pwd.length() <= 16){
+                if(user.password.equals(getMD5String(old_pwd))){
+                    sqliteImplementer.changeLoginPwd(user.username, getMD5String(new_pwd));
                     Toast.makeText(ChangeLoginPwdActivity.this, "修改成功", Toast.LENGTH_SHORT).show();
                     finish();
                 }else{
@@ -171,12 +180,14 @@ public class ChangeLoginPwdActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 111 && resultCode == 111) {
-            String oldpwd = data.getStringExtra("key");
-            edt_oldpwd.setText(oldpwd);
+            old_pwd = data.getStringExtra("key");
+            edt_oldpwd.setText(old_pwd);
+            showpwd();
         }
         if (requestCode == 112 && resultCode == 111) {
-            String newpwd = data.getStringExtra("key");
-            edt_newpwd.setText(newpwd);
+            new_pwd = data.getStringExtra("key");
+            edt_newpwd.setText(new_pwd);
+            showpwd();
         }
         flag = true;
         rawX = 0;
@@ -289,6 +300,7 @@ public class ChangeLoginPwdActivity extends AppCompatActivity {
                     }
                 }else {
                     if(rawX >= 0 && rawX <= 1430 && rawY >= 480 && rawY <= 690) {
+                        num_oldpwd = 0;
                         Intent intent = new Intent(ChangeLoginPwdActivity.this, InputActivity.class);
                         startActivityForResult(intent,111);
                     }else{
@@ -328,6 +340,7 @@ public class ChangeLoginPwdActivity extends AppCompatActivity {
                     }
                 }else {
                     if(rawX >= 0 && rawX <= 1430 && rawY >= 890 && rawY <= 1090) {
+                        num_newpwd = 0;
                         Intent intent = new Intent(ChangeLoginPwdActivity.this, InputActivity.class);
                         startActivityForResult(intent,112);
                     }else{
@@ -428,6 +441,7 @@ public class ChangeLoginPwdActivity extends AppCompatActivity {
                     }
                 }else {
                     if(rawX >= 65 && rawX <= 490 && rawY >= 1745 && rawY <= 1845) {
+                        showTag = !showTag;
                         showpwd();
                         Message message = Message.obtain();
                         message.what = 1;

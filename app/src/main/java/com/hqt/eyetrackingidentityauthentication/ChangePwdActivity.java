@@ -165,6 +165,7 @@ public class ChangePwdActivity extends AppCompatActivity {
                     }
                 }else {
                     if(rawX >= 0 && rawX <= 1430 && rawY >= 1400 && rawY <= 1630) {
+                        num_change_loginpwd = 0;
                         Intent intent = new Intent(ChangePwdActivity.this, ChangeLoginPwdActivity.class);
                         startActivityForResult(intent,111);
                     }else{
@@ -204,6 +205,7 @@ public class ChangePwdActivity extends AppCompatActivity {
                     }
                 }else {
                     if(rawX >= 0 && rawX <= 1430 && rawY >= 1650 && rawY <= 1880) {
+                        num_change_etpwd = 0;
                         Intent intent = new Intent(ChangePwdActivity.this, ChangeEtPwdActivity.class);
                         startActivityForResult(intent,111);
                     }else{
@@ -243,6 +245,7 @@ public class ChangePwdActivity extends AppCompatActivity {
                     }
                 }else {
                     if(rawX >= 1120 && rawX <= 1430 && rawY >= 1985 && rawY <= 2210) {
+                        num_openEt = 0;
                         if("1".equals(tag)){
                             Intent intent = new Intent(ChangePwdActivity.this, ComfirmEtActivity.class);
                             startActivityForResult(intent,111);

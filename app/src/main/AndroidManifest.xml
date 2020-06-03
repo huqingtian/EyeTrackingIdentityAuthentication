@@ -23,12 +23,14 @@
         <activity android:name=".EyeTrackActivity" />
         <activity android:name=".ChangeLoginPwdActivity" />
         <activity android:name=".ChangePwdActivity" />
-        <activity android:name=".LoginActivity">
+        <activity android:name=".LoginActivity"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
         <activity android:name=".MainActivity" />
     </application>
