@@ -305,12 +305,12 @@ public class MainActivity extends AppCompatActivity {
             super.handleMessage(msg);
             if(flag4){
                 if(msg.what == 1){
-                    if(rawX >= 0 && rawX <= 1430 && rawY >= 800 && rawY <= 1000){
+                    if(rawX >= 0 && rawX <= 1430 && rawY >= 750 && rawY <= 1050){
                         flag4 = false;
                         Message message = Message.obtain();
                         message.what = 1;
                         handler_pwd.sendMessageDelayed(message,0);
-                    }else if(rawX >= 0 && rawX <= 1430 && rawY >= 1300 && rawY <= 1520){
+                    }else if(rawX >= 0 && rawX <= 1430 && rawY >= 1250 && rawY <= 1550){
                         flag4 = false;
                         Message message = Message.obtain();
                         message.what = 1;
@@ -335,22 +335,22 @@ public class MainActivity extends AppCompatActivity {
             super.handleMessage(msg);
             if(flag){
                 if(msg.what == 1){
-                    if(rawX >= 0 && rawX <= 330 && rawY >= 2230 && rawY <= 2380){
+                    if(rawX >= 0 && rawX <= 330 && rawY >= 2180 && rawY <= 2390){
                         flag = false;
                         Message message = Message.obtain();
                         message.what = 1;
                         handler_message.sendMessageDelayed(message,0);
-                    }else if(rawX >= 360 && rawX <= 720 && rawY >= 2230 && rawY <= 2380){
+                    }else if(rawX >= 360 && rawX <= 720 && rawY >= 2180 && rawY <= 2390){
                         flag = false;
                         Message message = Message.obtain();
                         message.what = 1;
                         handler_contacts.sendMessageDelayed(message,0);
-                    }else if(rawX >= 750 && rawX <= 1100 && rawY >= 2230 && rawY <= 2380){
+                    }else if(rawX >= 750 && rawX <= 1100 && rawY >= 2180 && rawY <= 2390){
                         flag = false;
                         Message message = Message.obtain();
                         message.what = 1;
                         handler_focus.sendMessageDelayed(message,0);
-                    }else if(rawX >= 1140 && rawX <= 1430 && rawY >= 2230 && rawY <= 2380){
+                    }else if(rawX >= 1140 && rawX <= 1430 && rawY >= 2180 && rawY <= 2390){
                         flag = false;
                         Message message = Message.obtain();
                         message.what = 1;
@@ -375,7 +375,7 @@ public class MainActivity extends AppCompatActivity {
                     message.what = 1;
                     handler_message.sendMessageDelayed(message,250);
                 }else if(num_message == 1){
-                    if(rawX >= 0 && rawX <= 340 && rawY >= 2230 && rawY <= 2380) {
+                    if(rawX >= 0 && rawX <= 340 && rawY >= 2180 && rawY <= 2390) {
                         num_message++;
                         Message message = Message.obtain();
                         message.what = 1;
@@ -388,7 +388,7 @@ public class MainActivity extends AppCompatActivity {
                         handler.sendMessageDelayed(message,0);
                     }
                 }else {
-                    if(rawX >= 0 && rawX <= 340 && rawY >= 2230 && rawY <= 2380) {
+                    if(rawX >= 0 && rawX <= 340 && rawY >= 2180 && rawY <= 2390) {
                         showFragment(1);
                         messageChosed();
                         Message message = Message.obtain();
@@ -411,7 +411,7 @@ public class MainActivity extends AppCompatActivity {
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             if(msg.what == 1){
-                if(rawX >= 0 && rawX <= 340 && rawY >= 2230 && rawY <= 2380){
+                if(rawX >= 0 && rawX <= 340 && rawY >= 2180 && rawY <= 2390){
                     Message message = Message.obtain();
                     message.what = 1;
                     leave_handler_message.sendMessageDelayed(message,300);
@@ -437,7 +437,7 @@ public class MainActivity extends AppCompatActivity {
                     message.what = 1;
                     handler_contacts.sendMessageDelayed(message,250);
                 }else if(num_contacts == 1){
-                    if(rawX >= 360 && rawX <= 730 && rawY >= 2230 && rawY <= 2380) {
+                    if(rawX >= 360 && rawX <= 730 && rawY >= 2180 && rawY <= 2390) {
                         num_contacts++;
                         Message message = Message.obtain();
                         message.what = 1;
@@ -450,7 +450,7 @@ public class MainActivity extends AppCompatActivity {
                         handler.sendMessageDelayed(message,0);
                     }
                 }else {
-                    if(rawX >= 360 && rawX <= 730 && rawY >= 2230 && rawY <= 2380) {
+                    if(rawX >= 360 && rawX <= 730 && rawY >= 2180 && rawY <= 2390) {
                         showFragment(2);
                         contactsChosed();
                         Message message = Message.obtain();
@@ -473,7 +473,7 @@ public class MainActivity extends AppCompatActivity {
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             if(msg.what == 1){
-                if(rawX >= 360 && rawX <= 730 && rawY >= 2230 && rawY <= 2380){
+                if(rawX >= 360 && rawX <= 730 && rawY >= 2180 && rawY <= 2390){
                     Message message = Message.obtain();
                     message.what = 1;
                     leave_handler_contacts.sendMessageDelayed(message,300);
@@ -499,7 +499,7 @@ public class MainActivity extends AppCompatActivity {
                     message.what = 1;
                     handler_focus.sendMessageDelayed(message,250);
                 }else if(num_focus == 1){
-                    if(rawX >= 750 && rawX <= 1100 && rawY >= 2230 && rawY <= 2380) {
+                    if(rawX >= 750 && rawX <= 1100 && rawY >= 2180 && rawY <= 2390) {
                         num_focus++;
                         Message message = Message.obtain();
                         message.what = 1;
@@ -512,7 +512,7 @@ public class MainActivity extends AppCompatActivity {
                         handler.sendMessageDelayed(message,0);
                     }
                 }else {
-                    if(rawX >= 750 && rawX <= 1100 && rawY >= 2230 && rawY <= 2380) {
+                    if(rawX >= 750 && rawX <= 1100 && rawY >= 2180 && rawY <= 2390) {
                         showFragment(3);
                         focusChosed();
                         Message message = Message.obtain();
@@ -535,7 +535,7 @@ public class MainActivity extends AppCompatActivity {
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             if(msg.what == 1){
-                if(rawX >= 750 && rawX <= 1100 && rawY >= 2230 && rawY <= 2380){
+                if(rawX >= 750 && rawX <= 1100 && rawY >= 2180 && rawY <= 2390){
                     Message message = Message.obtain();
                     message.what = 1;
                     leave_handler_focus.sendMessageDelayed(message,300);
@@ -561,7 +561,7 @@ public class MainActivity extends AppCompatActivity {
                     message.what = 1;
                     handler_setting.sendMessageDelayed(message,250);
                 }else if(num_setting == 1){
-                    if(rawX >= 1140 && rawX <= 1430 && rawY >= 2230 && rawY <= 2380) {
+                    if(rawX >= 1140 && rawX <= 1430 && rawY >= 2180 && rawY <= 2390) {
                         num_setting++;
                         Message message = Message.obtain();
                         message.what = 1;
@@ -574,7 +574,7 @@ public class MainActivity extends AppCompatActivity {
                         handler.sendMessageDelayed(message,0);
                     }
                 }else {
-                    if(rawX >= 1140 && rawX <= 1430 && rawY >= 2230 && rawY <= 2380) {
+                    if(rawX >= 1140 && rawX <= 1430 && rawY >= 2180 && rawY <= 2390) {
                         showFragment(4);
                         settingChosed();
                         Message message = Message.obtain();
@@ -597,7 +597,7 @@ public class MainActivity extends AppCompatActivity {
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             if(msg.what == 1){
-                if(rawX >= 1140 && rawX <= 1430 && rawY >= 2230 && rawY <= 2380){
+                if(rawX >= 1140 && rawX <= 1430 && rawY >= 2180 && rawY <= 2390){
                     Message message = Message.obtain();
                     message.what = 1;
                     leave_handler_setting.sendMessageDelayed(message,300);
@@ -821,7 +821,7 @@ public class MainActivity extends AppCompatActivity {
                     message.what = 1;
                     handler_pwd.sendMessageDelayed(message,250);
                 }else if(num_pwd == 1){
-                    if(rawX >= 0 && rawX <= 1430 && rawY >= 800 && rawY <= 1000) {
+                    if(rawX >= 0 && rawX <= 1430 && rawY >= 750 && rawY <= 1050) {
                         num_pwd++;
                         Message message = Message.obtain();
                         message.what = 1;
@@ -834,7 +834,7 @@ public class MainActivity extends AppCompatActivity {
                         handler4.sendMessageDelayed(message,0);
                     }
                 }else {
-                    if(rawX >= 0 && rawX <= 1430 && rawY >= 800 && rawY <= 1000) {
+                    if(rawX >= 0 && rawX <= 1430 && rawY >= 750 && rawY <= 1050) {
                         num_pwd = 0;
                         Intent intent = new Intent(MainActivity.this, ChangePwdActivity.class);
                         startActivityForResult(intent,141);
@@ -861,7 +861,7 @@ public class MainActivity extends AppCompatActivity {
                     message.what = 1;
                     handler_reset.sendMessageDelayed(message,250);
                 }else if(num_reset == 1){
-                    if(rawX >= 0 && rawX <= 1430 && rawY >= 1300 && rawY <= 1520) {
+                    if(rawX >= 0 && rawX <= 1430 && rawY >= 1250 && rawY <= 1550) {
                         num_reset++;
                         Message message = Message.obtain();
                         message.what = 1;
@@ -874,7 +874,7 @@ public class MainActivity extends AppCompatActivity {
                         handler4.sendMessageDelayed(message,0);
                     }
                 }else {
-                    if(rawX >= 0 && rawX <= 1430 && rawY >= 1300 && rawY <= 1520) {
+                    if(rawX >= 0 && rawX <= 1430 && rawY >= 1250 && rawY <= 1550) {
                         num_reset = 0;
                         Intent intent = new Intent(MainActivity.this, ResetPwdActivity.class);
                         startActivityForResult(intent,141);

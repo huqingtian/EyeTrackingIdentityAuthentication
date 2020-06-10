@@ -203,7 +203,7 @@ public class ChangeLoginPwdActivity extends AppCompatActivity {
             super.handleMessage(msg);
             if(flag){
                 if(msg.what == 1){
-                    if(rawX >= 10 && rawX <= 110 && rawY >= 10 && rawY <= 220){
+                    if(rawX >= 10 && rawX <= 210 && rawY >= 10 && rawY <= 320){
                         flag = false;
                         Message message = Message.obtain();
                         message.what = 1;
@@ -248,7 +248,7 @@ public class ChangeLoginPwdActivity extends AppCompatActivity {
                     message.what = 1;
                     handler_return.sendMessageDelayed(message,250);
                 }else if(num_return == 1){
-                    if(rawX >= 10 && rawX <= 110 && rawY >= 10 && rawY <= 220) {
+                    if(rawX >= 10 && rawX <= 210 && rawY >= 10 && rawY <= 320) {
                         num_return++;
                         Message message = Message.obtain();
                         message.what = 1;
@@ -261,7 +261,7 @@ public class ChangeLoginPwdActivity extends AppCompatActivity {
                         handler.sendMessageDelayed(message,0);
                     }
                 }else {
-                    if(rawX >= 10 && rawX <= 110 && rawY >= 10 && rawY <= 220) {
+                    if(rawX >= 10 && rawX <= 210 && rawY >= 10 && rawY <= 320) {
                         finish();
                     }else{
                         num_return = 0;

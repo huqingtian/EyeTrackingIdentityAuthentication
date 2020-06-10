@@ -281,6 +281,10 @@ public class HumanCheckActivity extends AppCompatActivity {
                     }
                 }else {
                     if(rawX >= x + 120 && rawX <= x + 230 && rawY >= y + 530 && rawY <= y + 640) {
+                        num_target = 0;
+                        rawX = 0;
+                        rawY = 0;
+                        flag = false;
                         Toast.makeText(HumanCheckActivity.this, "认证成功", Toast.LENGTH_SHORT).show();
                         setResult(111);
                         finish();

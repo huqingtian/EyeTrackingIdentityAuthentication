@@ -45,7 +45,7 @@ public class LoginActivity extends AppCompatActivity {
                     Message message = Message.obtain();
                     message.what = 1;
                     handler_password.sendMessageDelayed(message,0);
-                }else if(rawX >= 850 && rawX <= 1020 && rawY >= 2200 && rawY <= 2260){
+                }else if(rawX >= 800 && rawX <= 1100 && rawY >= 2100 && rawY <= 2400){
                     flag = false;
                     Message message = Message.obtain();
                     message.what = 1;
@@ -130,8 +130,6 @@ public class LoginActivity extends AppCompatActivity {
                 }else {
                     if(rawX >= 140 && rawX <= 1300 && rawY >= 1200 && rawY <= 1300) {
                         num_password = 0;
-                        Message message = Message.obtain();
-                        message.what = 1;
                         Intent intent = new Intent(LoginActivity.this, InputActivity.class);
                         startActivityForResult(intent, 112);
                     }else{
@@ -157,7 +155,7 @@ public class LoginActivity extends AppCompatActivity {
                     message.what = 1;
                     handler_register.sendMessageDelayed(message,250);
                 }else if(num_register == 1){
-                    if(rawX >= 850 && rawX <= 1020 && rawY >= 2200 && rawY <= 2260) {
+                    if(rawX >= 800 && rawX <= 1100 && rawY >= 2100 && rawY <= 2400) {
                         num_register++;
                         Message message = Message.obtain();
                         message.what = 1;
@@ -170,10 +168,8 @@ public class LoginActivity extends AppCompatActivity {
                         handler.sendMessageDelayed(message,0);
                     }
                 }else {
-                    if(rawX >= 850 && rawX <= 1020 && rawY >= 2200 && rawY <= 2260) {
+                    if(rawX >= 800 && rawX <= 1100 && rawY >= 2100 && rawY <= 2400) {
                         num_register = 0;
-                        Message message = Message.obtain();
-                        message.what = 1;
                         Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
                         startActivityForResult(intent,113);
                         edt_password.setText("");
@@ -215,8 +211,6 @@ public class LoginActivity extends AppCompatActivity {
                 }else {
                     if(rawX >= 570 && rawX <= 810 && rawY >= 1560 && rawY <= 1820) {
                         num_login = 0;
-                        Message message = Message.obtain();
-                        message.what = 1;
                         login();
                     }else{
                         num_login = 0;

@@ -83,12 +83,12 @@ public class ComfirmEtActivity extends AppCompatActivity {
                         Message message = Message.obtain();
                         message.what = 1;
                         handler0.sendMessageDelayed(message,0);
-                    }else if(rawX >= 1160 && rawX <= 1290 && rawY >= 2290 && rawY <= 2350){     //文本框-"取消"位置
+                    }else if(rawX >= 1000 && rawX <= 1380 && rawY >= 2160 && rawY <= 2350){     //文本框-"取消"位置
                         flag = false;
                         Message message = Message.obtain();
                         message.what = 1;
                         handler_close.sendMessageDelayed(message,0);
-                    }else if(rawX >= 1200 && rawX <= 1330 && rawY >= 395 && rawY <= 465){     //图片"撤销密码"位置
+                    }else if(rawX >= 1150 && rawX <= 1400 && rawY >= 330 && rawY <= 530){     //图片"撤销密码"位置
                         flag = false;
                         Message message = Message.obtain();
                         message.what = 1;
@@ -743,7 +743,7 @@ public class ComfirmEtActivity extends AppCompatActivity {
                     message.what = 1;
                     handler_close.sendMessageDelayed(message,250);
                 }else if(num_close == 1){
-                    if(rawX >= 1160 && rawX <= 1290 && rawY >= 2290 && rawY <= 2350) {
+                    if(rawX >= 1000 && rawX <= 1380 && rawY >= 2160 && rawY <= 2350) {
                         num_close++;
                         Message message = Message.obtain();
                         message.what = 1;
@@ -756,7 +756,7 @@ public class ComfirmEtActivity extends AppCompatActivity {
                         handler.sendMessageDelayed(message,0);
                     }
                 }else {
-                    if(rawX >= 1160 && rawX <= 1290 && rawY >= 2290 && rawY <= 2350) {
+                    if(rawX >= 1000 && rawX <= 1380 && rawY >= 2160 && rawY <= 2350) {
                         Message message = Message.obtain();
                         message.what = 1;
                         leave_handler_close.sendMessageDelayed(message,0);
@@ -778,7 +778,7 @@ public class ComfirmEtActivity extends AppCompatActivity {
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             if(msg.what == 1){
-                if(rawX >= 1160 && rawX <= 1290 && rawY >= 2290 && rawY <= 2350){
+                if(rawX >= 1000 && rawX <= 1380 && rawY >= 2160 && rawY <= 2350){
                     Message message = Message.obtain();
                     message.what = 1;
                     leave_handler_close.sendMessageDelayed(message,300);
@@ -804,7 +804,7 @@ public class ComfirmEtActivity extends AppCompatActivity {
                     message.what = 1;
                     handler_cancel.sendMessageDelayed(message,250);
                 }else if(num_cancel == 1){
-                    if(rawX >= 1200 && rawX <= 1330 && rawY >= 395 && rawY <= 465) {
+                    if(rawX >= 1150 && rawX <= 1400 && rawY >= 330 && rawY <= 530) {
                         num_cancel++;
                         Message message = Message.obtain();
                         message.what = 1;
@@ -817,7 +817,7 @@ public class ComfirmEtActivity extends AppCompatActivity {
                         handler.sendMessageDelayed(message,0);
                     }
                 }else {
-                    if(rawX >= 1200 && rawX <= 1330 && rawY >= 395 && rawY <= 465) {
+                    if(rawX >= 1150 && rawX <= 1400 && rawY >= 330 && rawY <= 530) {
                         Message message = Message.obtain();
                         message.what = 1;
                         leave_handler_cancel.sendMessageDelayed(message,0);
@@ -841,7 +841,7 @@ public class ComfirmEtActivity extends AppCompatActivity {
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             if(msg.what == 1){
-                if(rawX >= 1200 && rawX <= 1330 && rawY >= 395 && rawY <= 465){
+                if(rawX >= 1150 && rawX <= 1400 && rawY >= 330 && rawY <= 530){
                     Message message = Message.obtain();
                     message.what = 1;
                     leave_handler_cancel.sendMessageDelayed(message,300);
