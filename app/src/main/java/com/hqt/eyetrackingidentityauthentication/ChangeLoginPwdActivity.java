@@ -302,6 +302,7 @@ public class ChangeLoginPwdActivity extends AppCompatActivity {
                     if(rawX >= 0 && rawX <= 1430 && rawY >= 480 && rawY <= 690) {
                         num_oldpwd = 0;
                         Intent intent = new Intent(ChangeLoginPwdActivity.this, InputActivity.class);
+                        intent.putExtra("isPwd", "1");
                         startActivityForResult(intent,111);
                     }else{
                         num_oldpwd = 0;
@@ -342,6 +343,7 @@ public class ChangeLoginPwdActivity extends AppCompatActivity {
                     if(rawX >= 0 && rawX <= 1430 && rawY >= 890 && rawY <= 1090) {
                         num_newpwd = 0;
                         Intent intent = new Intent(ChangeLoginPwdActivity.this, InputActivity.class);
+                        intent.putExtra("isPwd", "1");
                         startActivityForResult(intent,112);
                     }else{
                         num_newpwd = 0;

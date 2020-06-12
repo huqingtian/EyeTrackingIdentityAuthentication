@@ -243,6 +243,7 @@ public class RegisterActivity extends AppCompatActivity {
                     if(rawX >= 140 && rawX <= 1300 && rawY >= 940 && rawY <= 1040) {
                         num_username = 0;
                         Intent intent = new Intent(RegisterActivity.this, InputActivity.class);
+                        intent.putExtra("isPwd", "0");
                         startActivityForResult(intent,111);
                     }else{
                         num_username = 0;
@@ -283,6 +284,7 @@ public class RegisterActivity extends AppCompatActivity {
                     if(rawX >= 140 && rawX <= 1300 && rawY >= 1200 && rawY <= 1300) {
                         num_password = 0;
                         Intent intent = new Intent(RegisterActivity.this, InputActivity.class);
+                        intent.putExtra("isPwd", "1");
                         startActivityForResult(intent, 112);
                     }else{
                         num_password = 0;

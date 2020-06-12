@@ -12,18 +12,34 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class InputActivity extends AppCompatActivity {
-    TextView txt_input_show;
+    TextView txt_input_show, txt_input_1, txt_input_2, txt_input_3, txt_input_4, txt_input_5, txt_input_6, txt_input_7, txt_input_8, txt_input_9;
     private float rawX ;
     private float rawY ;
     String password = "";
-    boolean flag = true;
-    int num_pwd, num_1, num_2, num_3, num_4, num_5, num_6, num_7, num_8, num_9, num_0, num_submit, num_return, num_a, num_b, num_c, num_d, num_e;
-    int num_f, num_g, num_h, num_i, num_j, num_k, num_l, num_m, num_n, num_o, num_p, num_q, num_r, num_s, num_t, num_u, num_v, num_w, num_x, num_y, num_z;
+    int pwd_code1, pwd_code2;
+    boolean flag = true, flag_chose = false, isPwd = false;
+    int num_1, num_2, num_3, num_4, num_5, num_6, num_7, num_8, num_9, num_submit, num_return, num_clear, num_chose_1, num_chose_2, num_chose_3, num_chose_4, num_chose_return;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_input);
+        Intent intent = getIntent();
+        String str = intent.getStringExtra("isPwd");
+        if("1".equals(str)){
+            isPwd = true;
+        }else {
+            isPwd = false;
+        }
         txt_input_show = findViewById(R.id.txt_input_show);
+        txt_input_1 = findViewById(R.id.txt_input_1);
+        txt_input_2 = findViewById(R.id.txt_input_2);
+        txt_input_3 = findViewById(R.id.txt_input_3);
+        txt_input_4 = findViewById(R.id.txt_input_4);
+        txt_input_5 = findViewById(R.id.txt_input_5);
+        txt_input_6 = findViewById(R.id.txt_input_6);
+        txt_input_7 = findViewById(R.id.txt_input_7);
+        txt_input_8 = findViewById(R.id.txt_input_8);
+        txt_input_9 = findViewById(R.id.txt_input_9);
         Message message = Message.obtain();
         message.what = 1;
         handler.sendMessageDelayed(message,0);
@@ -34,11 +50,137 @@ public class InputActivity extends AppCompatActivity {
         setResult(111, intent);
         finish();
     }
+    void toPwd(){
+        if(pwd_code1 == 1){
+            if(pwd_code2 == 1){
+                password += "1";
+            }else if(pwd_code2 == 2){
+                password += "a";
+            }else if(pwd_code2 == 3){
+                password += "b";
+            }else if(pwd_code2 == 4){
+                password += "c";
+            }
+        }else if(pwd_code1 == 2){
+            if(pwd_code2 == 1){
+                password += "2";
+            }else if(pwd_code2 == 2){
+                password += "d";
+            }else if(pwd_code2 == 3){
+                password += "e";
+            }else if(pwd_code2 == 4){
+                password += "f";
+            }
+        }else if(pwd_code1 == 3){
+            if(pwd_code2 == 1){
+                password += "3";
+            }else if(pwd_code2 == 2){
+                password += "g";
+            }else if(pwd_code2 == 3){
+                password += "h";
+            }else if(pwd_code2 == 4){
+                password += "i";
+            }
+        }else if(pwd_code1 == 4){
+            if(pwd_code2 == 1){
+                password += "4";
+            }else if(pwd_code2 == 2){
+                password += "j";
+            }else if(pwd_code2 == 3){
+                password += "k";
+            }else if(pwd_code2 == 4){
+                password += "l";
+            }
+        }else if(pwd_code1 == 5){
+            if(pwd_code2 == 1){
+                password += "5";
+            }else if(pwd_code2 == 2){
+                password += "m";
+            }else if(pwd_code2 == 3){
+                password += "n";
+            }else if(pwd_code2 == 4){
+                password += "o";
+            }
+        }else if(pwd_code1 == 6){
+            if(pwd_code2 == 1){
+                password += "6";
+            }else if(pwd_code2 == 2){
+                password += "p";
+            }else if(pwd_code2 == 3){
+                password += "q";
+            }else if(pwd_code2 == 4){
+                password += "r";
+            }
+        }else if(pwd_code1 == 7){
+            if(pwd_code2 == 1){
+                password += "7";
+            }else if(pwd_code2 == 2){
+                password += "s";
+            }else if(pwd_code2 == 3){
+                password += "t";
+            }else if(pwd_code2 == 4){
+                password += "u";
+            }
+        }else if(pwd_code1 == 8){
+            if(pwd_code2 == 1){
+                password += "8";
+            }else if(pwd_code2 == 2){
+                password += "v";
+            }else if(pwd_code2 == 3){
+                password += "w";
+            }else if(pwd_code2 == 4){
+                password += "x";
+            }
+        }else if(pwd_code1 == 9){
+            if(pwd_code2 == 1){
+                password += "9";
+            }else if(pwd_code2 == 2){
+                password += "y";
+            }else if(pwd_code2 == 3){
+                password += "z";
+            }else if(pwd_code2 == 4){
+                password += "0";
+            }
+        }
+        String temp = "";
+        if(isPwd){
+            for(int i = 0; i < password.length(); i++){
+                temp += "●";
+            }
+        }else{
+            temp = password;
+        }
+        changeLayout(false,"","","","");
+        pwd_code1 = pwd_code2 = 0;
+        txt_input_show.setText(temp);
+    }
+    void changeLayout(boolean flag, String s1, String s2, String s3, String s4){
+        if(flag){
+            txt_input_1.setText("");
+            txt_input_2.setText(s1);
+            txt_input_3.setText("");
+            txt_input_4.setText(s2);
+            txt_input_5.setText("×");
+            txt_input_6.setText(s4);
+            txt_input_7.setText("");
+            txt_input_8.setText(s3);
+            txt_input_9.setText("");
+        }else{
+            txt_input_1.setText("1\nABC");
+            txt_input_2.setText("2\nDEF");
+            txt_input_3.setText("3\nGHI");
+            txt_input_4.setText("4\nJKL");
+            txt_input_5.setText("5\nMNO");
+            txt_input_6.setText("6\nPQR");
+            txt_input_7.setText("7\nSTU");
+            txt_input_8.setText("8\nWVX");
+            txt_input_9.setText("9\nYZ0");
+        }
+    }
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
         rawX = ev.getRawX();
         rawY = ev.getRawY();
-        // System.out.println(rawX+"---"+rawY);
         return super.dispatchTouchEvent(ev);
     }
     @SuppressLint("HandlerLeak")
@@ -48,196 +190,66 @@ public class InputActivity extends AppCompatActivity {
             super.handleMessage(msg);
             if(flag) {
                 if (msg.what == 1) {
-                    if (rawX >= 45 && rawX <= 260 && rawY >= 125 && rawY <= 340) {
-                        flag = false;
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        handler_a.sendMessageDelayed(message, 0);
-                    } else if (rawX >= 320 && rawX <= 535 && rawY >= 125 && rawY <= 340) {
-                        flag = false;
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        handler_b.sendMessageDelayed(message, 0);
-                    } else if (rawX >= 595 && rawX <= 810 && rawY >= 125 && rawY <= 340) {
-                        flag = false;
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        handler_c.sendMessageDelayed(message, 0);
-                    } else if (rawX >= 870 && rawX <= 1085 && rawY >= 125 && rawY <= 340) {
-                        flag = false;
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        handler_d.sendMessageDelayed(message, 0);
-                    } else if (rawX >= 1145 && rawX <= 1360 && rawY >= 125 && rawY <= 340) {
-                        flag = false;
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        handler_e.sendMessageDelayed(message, 0);
-                    } else if (rawX >= 45 && rawX <= 260 && rawY >= 410 && rawY <= 625) {
-                        flag = false;
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        handler_f.sendMessageDelayed(message, 0);
-                    } else if (rawX >= 320 && rawX <= 535 && rawY >= 410 && rawY <= 625) {
-                        flag = false;
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        handler_g.sendMessageDelayed(message, 0);
-                    } else if (rawX >= 595 && rawX <= 810 && rawY >= 410 && rawY <= 625) {
-                        flag = false;
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        handler_h.sendMessageDelayed(message, 0);
-                    } else if (rawX >= 870 && rawX <= 1085 && rawY >= 410 && rawY <= 625) {
-                        flag = false;
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        handler_i.sendMessageDelayed(message, 0);
-                    } else if (rawX >= 1145 && rawX <= 1360 && rawY >= 410 && rawY <= 625) {
-                        flag = false;
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        handler_j.sendMessageDelayed(message, 0);
-                    } else if (rawX >= 45 && rawX <= 260 && rawY >= 690 && rawY <= 910) {
-                        flag = false;
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        handler_k.sendMessageDelayed(message, 0);
-                    } else if (rawX >= 320 && rawX <= 535 && rawY >= 690 && rawY <= 910) {
-                        flag = false;
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        handler_l.sendMessageDelayed(message, 0);
-                    } else if (rawX >= 595 && rawX <= 810 && rawY >= 690 && rawY <= 910) {
-                        flag = false;
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        handler_m.sendMessageDelayed(message, 0);
-                    } else if (rawX >= 870 && rawX <= 1085 && rawY >= 690 && rawY <= 910) {
-                        flag = false;
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        handler_n.sendMessageDelayed(message, 0);
-                    } else if (rawX >= 1145 && rawX <= 1360 && rawY >= 690 && rawY <= 910) {
-                        flag = false;
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        handler_o.sendMessageDelayed(message, 0);
-                    } else if (rawX >= 45 && rawX <= 260 && rawY >= 970 && rawY <= 1200) {
-                        flag = false;
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        handler_p.sendMessageDelayed(message, 0);
-                    } else if (rawX >= 320 && rawX <= 535 && rawY >= 970 && rawY <= 1200) {
-                        flag = false;
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        handler_q.sendMessageDelayed(message, 0);
-                    } else if (rawX >= 595 && rawX <= 810 && rawY >= 970 && rawY <= 1200) {
-                        flag = false;
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        handler_r.sendMessageDelayed(message, 0);
-                    } else if (rawX >= 870 && rawX <= 1085 && rawY >= 970 && rawY <= 1200) {
-                        flag = false;
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        handler_s.sendMessageDelayed(message, 0);
-                    } else if (rawX >= 1145 && rawX <= 1360 && rawY >= 970 && rawY <= 1200) {
-                        flag = false;
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        handler_t.sendMessageDelayed(message, 0);
-                    } else if (rawX >= 45 && rawX <= 260 && rawY >= 1250 && rawY <= 1470) {
-                        flag = false;
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        handler_u.sendMessageDelayed(message, 0);
-                    } else if (rawX >= 320 && rawX <= 535 && rawY >= 1250 && rawY <= 1470) {
-                        flag = false;
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        handler_v.sendMessageDelayed(message, 0);
-                    } else if (rawX >= 595 && rawX <= 810 && rawY >= 1250 && rawY <= 1470) {
-                        flag = false;
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        handler_w.sendMessageDelayed(message, 0);
-                    } else if (rawX >= 870 && rawX <= 1085 && rawY >= 1250 && rawY <= 1470) {
-                        flag = false;
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        handler_x.sendMessageDelayed(message, 0);
-                    } else if (rawX >= 1145 && rawX <= 1360 && rawY >= 1250 && rawY <= 1470) {
-                        flag = false;
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        handler_y.sendMessageDelayed(message, 0);
-                    } else if (rawX >= 45 && rawX <= 260 && rawY >= 1520 && rawY <= 1750) {
-                        flag = false;
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        handler_z.sendMessageDelayed(message, 0);
-                    } else if (rawX >= 320 && rawX <= 535 && rawY >= 1520 && rawY <= 1750) {
+                    if (rawX >= 40 && rawX <= 450 && rawY >= 540 && rawY <= 950) {
                         flag = false;
                         Message message = Message.obtain();
                         message.what = 1;
                         handler_1.sendMessageDelayed(message, 0);
-                    } else if (rawX >= 595 && rawX <= 810 && rawY >= 1520 && rawY <= 1750) {
+                    } else if (rawX >= 510 && rawX <= 920 && rawY >= 540 && rawY <= 950) {
                         flag = false;
                         Message message = Message.obtain();
                         message.what = 1;
                         handler_2.sendMessageDelayed(message, 0);
-                    } else if (rawX >= 870 && rawX <= 1085 && rawY >= 1520 && rawY <= 1750) {
+                    } else if (rawX >= 980 && rawX <= 1390 && rawY >= 540 && rawY <= 950) {
                         flag = false;
                         Message message = Message.obtain();
                         message.what = 1;
                         handler_3.sendMessageDelayed(message, 0);
-                    } else if (rawX >= 1145 && rawX <= 1360 && rawY >= 1520 && rawY <= 1750) {
+                    } else if (rawX >= 40 && rawX <= 450 && rawY >= 1025 && rawY <= 1450) {
                         flag = false;
                         Message message = Message.obtain();
                         message.what = 1;
                         handler_4.sendMessageDelayed(message, 0);
-                    }else if (rawX >= 45 && rawX <= 260 && rawY >= 1800 && rawY <= 2030) {
+                    } else if (rawX >= 510 && rawX <= 920 && rawY >= 1025 && rawY <= 1450) {
                         flag = false;
                         Message message = Message.obtain();
                         message.what = 1;
                         handler_5.sendMessageDelayed(message, 0);
-                    } else if (rawX >= 320 && rawX <= 535 && rawY >= 1800 && rawY <= 2030) {
+                    } else if (rawX >= 980 && rawX <= 1390 && rawY >= 1025 && rawY <= 1450) {
                         flag = false;
                         Message message = Message.obtain();
                         message.what = 1;
                         handler_6.sendMessageDelayed(message, 0);
-                    } else if (rawX >= 595 && rawX <= 810 && rawY >= 1800 && rawY <= 2030) {
+                    } else if (rawX >= 40 && rawX <= 450 && rawY >= 1520 && rawY <= 1940) {
                         flag = false;
                         Message message = Message.obtain();
                         message.what = 1;
                         handler_7.sendMessageDelayed(message, 0);
-                    } else if (rawX >= 870 && rawX <= 1085 && rawY >= 1800 && rawY <= 2030) {
+                    } else if (rawX >= 510 && rawX <= 920 && rawY >= 1520 && rawY <= 1940) {
                         flag = false;
                         Message message = Message.obtain();
                         message.what = 1;
                         handler_8.sendMessageDelayed(message, 0);
-                    } else if (rawX >= 1145 && rawX <= 1360 && rawY >= 1800 && rawY <= 2030) {
+                    } else if (rawX >= 980 && rawX <= 1390 && rawY >= 1520 && rawY <= 1940) {
                         flag = false;
                         Message message = Message.obtain();
                         message.what = 1;
                         handler_9.sendMessageDelayed(message, 0);
-                    } else if (rawX >= 595 && rawX <= 810 && rawY >= 2080 && rawY <= 2310) {
-                        flag = false;
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        handler_0.sendMessageDelayed(message, 0);
-                    }else if (rawX >= 40 && rawX <= 235 && rawY >= 2285 && rawY <= 2365) {
+                    } else if (rawX >= 0 && rawX <= 350 && rawY >= 2040 && rawY <= 2250) {
                         flag = false;
                         Message message = Message.obtain();
                         message.what = 1;
                         handler_submit.sendMessageDelayed(message, 0);
-                    }else if (rawX >= 1200 && rawX <= 1390 && rawY >= 2285 && rawY <= 2365) {
+                    }else if (rawX >= 1070 && rawX <= 1440 && rawY >= 2040 && rawY <= 2250) {
                         flag = false;
                         Message message = Message.obtain();
                         message.what = 1;
                         handler_return.sendMessageDelayed(message, 0);
+                    }else if (rawX >= 1100 && rawX <= 1400 && rawY >= 120 && rawY <= 400) {
+                        flag = false;
+                        Message message = Message.obtain();
+                        message.what = 1;
+                        handler_clear.sendMessageDelayed(message, 0);
                     }
                     Message message = Message.obtain();
                     message.what = 1;
@@ -258,7 +270,7 @@ public class InputActivity extends AppCompatActivity {
                     message.what = 1;
                     handler_return.sendMessageDelayed(message,250);
                 }else if(num_return == 1){
-                    if(rawX >= 1200 && rawX <= 1390 && rawY >= 2285 && rawY <= 2365) {
+                    if(rawX >= 1070 && rawX <= 1440 && rawY >= 2040 && rawY <= 2250) {
                         num_return++;
                         Message message = Message.obtain();
                         message.what = 1;
@@ -271,7 +283,7 @@ public class InputActivity extends AppCompatActivity {
                         handler.sendMessageDelayed(message,0);
                     }
                 }else {
-                    if(rawX >= 1200 && rawX <= 1390 && rawY >= 2285 && rawY <= 2365) {
+                    if(rawX >= 1070 && rawX <= 1440 && rawY >= 2040 && rawY <= 2250) {
                         Message message = Message.obtain();
                         message.what = 1;
                         leave_handler_return.sendMessageDelayed(message,0);
@@ -293,7 +305,7 @@ public class InputActivity extends AppCompatActivity {
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             if(msg.what == 1){
-                if(rawX >= 1200 && rawX <= 1390 && rawY >= 2285 && rawY <= 2365) {
+                if(rawX >= 1070 && rawX <= 1440 && rawY >= 2040 && rawY <= 2250) {
                     Message message = Message.obtain();
                     message.what = 1;
                     leave_handler_return.sendMessageDelayed(message,300);
@@ -319,7 +331,7 @@ public class InputActivity extends AppCompatActivity {
                     message.what = 1;
                     handler_submit.sendMessageDelayed(message,250);
                 }else if(num_submit == 1){
-                    if(rawX >= 40 && rawX <= 235 && rawY >= 2285 && rawY <= 2365) {
+                    if(rawX >= 0 && rawX <= 350 && rawY >= 2040 && rawY <= 2250) {
                         num_submit++;
                         Message message = Message.obtain();
                         message.what = 1;
@@ -332,7 +344,7 @@ public class InputActivity extends AppCompatActivity {
                         handler.sendMessageDelayed(message,0);
                     }
                 }else {
-                    if(rawX >= 40 && rawX <= 235 && rawY >= 2285 && rawY <= 2365) {
+                    if(rawX >= 0 && rawX <= 350 && rawY >= 2040 && rawY <= 2250) {
                         Message message = Message.obtain();
                         message.what = 1;
                         leave_handler_submit.sendMessageDelayed(message,0);
@@ -354,579 +366,12 @@ public class InputActivity extends AppCompatActivity {
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             if(msg.what == 1){
-                if(rawX >= 40 && rawX <= 235 && rawY >= 2285 && rawY <= 2365) {
+                if(rawX >= 0 && rawX <= 350 && rawY >= 2040 && rawY <= 2250) {
                     Message message = Message.obtain();
                     message.what = 1;
                     leave_handler_submit.sendMessageDelayed(message,300);
                 }else{
                     num_submit = 0;
-                    flag = true;
-                    Message message = Message.obtain();
-                    message.what = 1;
-                    handler.sendMessageDelayed(message,0);
-                }
-            }
-        }
-    };
-    @SuppressLint("HandlerLeak")
-    Handler handler_0 = new Handler(){
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            if(msg.what == 1){
-                if(num_0 == 0){
-                    num_0++;
-                    Message message = Message.obtain();
-                    message.what = 1;
-                    handler_0.sendMessageDelayed(message,250);
-                }else if(num_0 == 1){
-                    if(rawX >= 595 && rawX <= 810 && rawY >= 2080 && rawY <= 2310) {
-                        num_0++;
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        handler_0.sendMessageDelayed(message,250);
-                    }else{
-                        num_0 = 0;
-                        flag = true;
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        handler.sendMessageDelayed(message,0);
-                    }
-                }else {
-                    if(rawX >= 595 && rawX <= 810 && rawY >= 2080 && rawY <= 2310) {
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        leave_handler_0.sendMessageDelayed(message,0);
-                        password += "0";
-                        num_pwd++;
-                        txt_input_show.setText("已输入"+num_pwd+"个字符");
-                    }else{
-                        num_0 = 0;
-                        flag = true;
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        handler.sendMessageDelayed(message,0);
-                    }
-                }
-            }
-        }
-    };
-    @SuppressLint("HandlerLeak")
-    Handler leave_handler_0 = new Handler(){
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            if(msg.what == 1){
-                if(rawX >= 595 && rawX <= 810 && rawY >= 2080 && rawY <= 2310) {
-                    Message message = Message.obtain();
-                    message.what = 1;
-                    leave_handler_0.sendMessageDelayed(message,300);
-                }else{
-                    num_0 = 0;
-                    flag = true;
-                    Message message = Message.obtain();
-                    message.what = 1;
-                    handler.sendMessageDelayed(message,0);
-                }
-            }
-        }
-    };
-    @SuppressLint("HandlerLeak")
-    Handler handler_9 = new Handler(){
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            if(msg.what == 1){
-                if(num_9 == 0){
-                    num_9++;
-                    Message message = Message.obtain();
-                    message.what = 1;
-                    handler_9.sendMessageDelayed(message,250);
-                }else if(num_9 == 1){
-                    if(rawX >= 1145 && rawX <= 1360 && rawY >= 1800 && rawY <= 2030) {
-                        num_9++;
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        handler_9.sendMessageDelayed(message,250);
-                    }else{
-                        num_9 = 0;
-                        flag = true;
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        handler.sendMessageDelayed(message,0);
-                    }
-                }else {
-                    if(rawX >= 1145 && rawX <= 1360 && rawY >= 1800 && rawY <= 2030) {
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        leave_handler_9.sendMessageDelayed(message,0);
-                        password += "9";
-                        num_pwd++;
-                        txt_input_show.setText("已输入"+num_pwd+"个字符");
-                    }else{
-                        num_9 = 0;
-                        flag = true;
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        handler.sendMessageDelayed(message,0);
-                    }
-                }
-            }
-        }
-    };
-    @SuppressLint("HandlerLeak")
-    Handler leave_handler_9 = new Handler(){
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            if(msg.what == 1){
-                if(rawX >= 1145 && rawX <= 1360 && rawY >= 1800 && rawY <= 2030) {
-                    Message message = Message.obtain();
-                    message.what = 1;
-                    leave_handler_9.sendMessageDelayed(message,300);
-                }else{
-                    num_9 = 0;
-                    flag = true;
-                    Message message = Message.obtain();
-                    message.what = 1;
-                    handler.sendMessageDelayed(message,0);
-                }
-            }
-        }
-    };
-    @SuppressLint("HandlerLeak")
-    Handler handler_8 = new Handler(){
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            if(msg.what == 1){
-                if(num_8 == 0){
-                    num_8++;
-                    Message message = Message.obtain();
-                    message.what = 1;
-                    handler_8.sendMessageDelayed(message,250);
-                }else if(num_8 == 1){
-                    if(rawX >= 870 && rawX <= 1085 && rawY >= 1800 && rawY <= 2030) {
-                        num_8++;
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        handler_8.sendMessageDelayed(message,250);
-                    }else{
-                        num_8 = 0;
-                        flag = true;
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        handler.sendMessageDelayed(message,0);
-                    }
-                }else {
-                    if(rawX >= 870 && rawX <= 1085 && rawY >= 1800 && rawY <= 2030) {
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        leave_handler_8.sendMessageDelayed(message,0);
-                        password += "8";
-                        num_pwd++;
-                        txt_input_show.setText("已输入"+num_pwd+"个字符");
-                    }else{
-                        num_8 = 0;
-                        flag = true;
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        handler.sendMessageDelayed(message,0);
-                    }
-                }
-            }
-        }
-    };
-    @SuppressLint("HandlerLeak")
-    Handler leave_handler_8 = new Handler(){
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            if(msg.what == 1){
-                if(rawX >= 870 && rawX <= 1085 && rawY >= 1800 && rawY <= 2030) {
-                    Message message = Message.obtain();
-                    message.what = 1;
-                    leave_handler_8.sendMessageDelayed(message,300);
-                }else{
-                    num_8 = 0;
-                    flag = true;
-                    Message message = Message.obtain();
-                    message.what = 1;
-                    handler.sendMessageDelayed(message,0);
-                }
-            }
-        }
-    };
-    @SuppressLint("HandlerLeak")
-    Handler handler_7 = new Handler(){
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            if(msg.what == 1){
-                if(num_7 == 0){
-                    num_7++;
-                    Message message = Message.obtain();
-                    message.what = 1;
-                    handler_7.sendMessageDelayed(message,250);
-                }else if(num_7 == 1){
-                    if(rawX >= 595 && rawX <= 810 && rawY >= 1800 && rawY <= 2030) {
-                        num_7++;
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        handler_7.sendMessageDelayed(message,250);
-                    }else{
-                        num_7 = 0;
-                        flag = true;
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        handler.sendMessageDelayed(message,0);
-                    }
-                }else {
-                    if(rawX >= 595 && rawX <= 810 && rawY >= 1800 && rawY <= 2030) {
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        leave_handler_7.sendMessageDelayed(message,0);
-                        password += "7";
-                        num_pwd++;
-                        txt_input_show.setText("已输入"+num_pwd+"个字符");
-                    }else{
-                        num_7 = 0;
-                        flag = true;
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        handler.sendMessageDelayed(message,0);
-                    }
-                }
-            }
-        }
-    };
-    @SuppressLint("HandlerLeak")
-    Handler leave_handler_7 = new Handler(){
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            if(msg.what == 1){
-                if(rawX >= 595 && rawX <= 810 && rawY >= 1800 && rawY <= 2030) {
-                    Message message = Message.obtain();
-                    message.what = 1;
-                    leave_handler_7.sendMessageDelayed(message,300);
-                }else{
-                    num_7 = 0;
-                    flag = true;
-                    Message message = Message.obtain();
-                    message.what = 1;
-                    handler.sendMessageDelayed(message,0);
-                }
-            }
-        }
-    };
-    @SuppressLint("HandlerLeak")
-    Handler handler_6 = new Handler(){
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            if(msg.what == 1){
-                if(num_6 == 0){
-                    num_6++;
-                    Message message = Message.obtain();
-                    message.what = 1;
-                    handler_6.sendMessageDelayed(message,250);
-                }else if(num_6 == 1){
-                    if(rawX >= 320 && rawX <= 535 && rawY >= 1800 && rawY <= 2030) {
-                        num_6++;
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        handler_6.sendMessageDelayed(message,250);
-                    }else{
-                        num_6 = 0;
-                        flag = true;
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        handler.sendMessageDelayed(message,0);
-                    }
-                }else {
-                    if(rawX >= 320 && rawX <= 535 && rawY >= 1800 && rawY <= 2030) {
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        leave_handler_6.sendMessageDelayed(message,0);
-                        password += "6";
-                        num_pwd++;
-                        txt_input_show.setText("已输入"+num_pwd+"个字符");
-                    }else{
-                        num_6 = 0;
-                        flag = true;
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        handler.sendMessageDelayed(message,0);
-                    }
-                }
-            }
-        }
-    };
-    @SuppressLint("HandlerLeak")
-    Handler leave_handler_6 = new Handler(){
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            if(msg.what == 1){
-                if(rawX >= 320 && rawX <= 535 && rawY >= 1800 && rawY <= 2030) {
-                    Message message = Message.obtain();
-                    message.what = 1;
-                    leave_handler_6.sendMessageDelayed(message,300);
-                }else{
-                    num_6 = 0;
-                    flag = true;
-                    Message message = Message.obtain();
-                    message.what = 1;
-                    handler.sendMessageDelayed(message,0);
-                }
-            }
-        }
-    };
-    @SuppressLint("HandlerLeak")
-    Handler handler_5 = new Handler(){
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            if(msg.what == 1){
-                if(num_5 == 0){
-                    num_5++;
-                    Message message = Message.obtain();
-                    message.what = 1;
-                    handler_5.sendMessageDelayed(message,250);
-                }else if(num_5 == 1){
-                    if(rawX >= 45 && rawX <= 260 && rawY >= 1800 && rawY <= 2030) {
-                        num_5++;
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        handler_5.sendMessageDelayed(message,250);
-                    }else{
-                        num_5 = 0;
-                        flag = true;
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        handler.sendMessageDelayed(message,0);
-                    }
-                }else {
-                    if(rawX >= 45 && rawX <= 260 && rawY >= 1800 && rawY <= 2030) {
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        leave_handler_5.sendMessageDelayed(message,0);
-                        password += "5";
-                        num_pwd++;
-                        txt_input_show.setText("已输入"+num_pwd+"个字符");
-                    }else{
-                        num_5 = 0;
-                        flag = true;
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        handler.sendMessageDelayed(message,0);
-                    }
-                }
-            }
-        }
-    };
-    @SuppressLint("HandlerLeak")
-    Handler leave_handler_5 = new Handler(){
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            if(msg.what == 1){
-                if(rawX >= 45 && rawX <= 260 && rawY >= 1800 && rawY <= 2030) {
-                    Message message = Message.obtain();
-                    message.what = 1;
-                    leave_handler_5.sendMessageDelayed(message,300);
-                }else{
-                    num_5 = 0;
-                    flag = true;
-                    Message message = Message.obtain();
-                    message.what = 1;
-                    handler.sendMessageDelayed(message,0);
-                }
-            }
-        }
-    };
-    @SuppressLint("HandlerLeak")
-    Handler handler_4 = new Handler(){
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            if(msg.what == 1){
-                if(num_4 == 0){
-                    num_4++;
-                    Message message = Message.obtain();
-                    message.what = 1;
-                    handler_4.sendMessageDelayed(message,250);
-                }else if(num_4 == 1){
-                    if(rawX >= 1145 && rawX <= 1360 && rawY >= 1520 && rawY <= 1750) {
-                        num_4++;
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        handler_4.sendMessageDelayed(message,250);
-                    }else{
-                        num_4 = 0;
-                        flag = true;
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        handler.sendMessageDelayed(message,0);
-                    }
-                }else {
-                    if(rawX >= 1145 && rawX <= 1360 && rawY >= 1520 && rawY <= 1750) {
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        leave_handler_4.sendMessageDelayed(message,0);
-                        password += "4";
-                        num_pwd++;
-                        txt_input_show.setText("已输入"+num_pwd+"个字符");
-                    }else{
-                        num_4 = 0;
-                        flag = true;
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        handler.sendMessageDelayed(message,0);
-                    }
-                }
-            }
-        }
-    };
-    @SuppressLint("HandlerLeak")
-    Handler leave_handler_4 = new Handler(){
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            if(msg.what == 1){
-                if(rawX >= 1145 && rawX <= 1360 && rawY >= 1520 && rawY <= 1750) {
-                    Message message = Message.obtain();
-                    message.what = 1;
-                    leave_handler_4.sendMessageDelayed(message,300);
-                }else{
-                    num_4 = 0;
-                    flag = true;
-                    Message message = Message.obtain();
-                    message.what = 1;
-                    handler.sendMessageDelayed(message,0);
-                }
-            }
-        }
-    };
-    @SuppressLint("HandlerLeak")
-    Handler handler_3 = new Handler(){
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            if(msg.what == 1){
-                if(num_3 == 0){
-                    num_3++;
-                    Message message = Message.obtain();
-                    message.what = 1;
-                    handler_3.sendMessageDelayed(message,250);
-                }else if(num_3 == 1){
-                    if(rawX >= 870 && rawX <= 1085 && rawY >= 1520 && rawY <= 1750) {
-                        num_3++;
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        handler_3.sendMessageDelayed(message,250);
-                    }else{
-                        num_3 = 0;
-                        flag = true;
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        handler.sendMessageDelayed(message,0);
-                    }
-                }else {
-                    if(rawX >= 870 && rawX <= 1085 && rawY >= 1520 && rawY <= 1750) {
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        leave_handler_3.sendMessageDelayed(message,0);
-                        password += "3";
-                        num_pwd++;
-                        txt_input_show.setText("已输入"+num_pwd+"个字符");
-                    }else{
-                        num_3 = 0;
-                        flag = true;
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        handler.sendMessageDelayed(message,0);
-                    }
-                }
-            }
-        }
-    };
-    @SuppressLint("HandlerLeak")
-    Handler leave_handler_3 = new Handler(){
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            if(msg.what == 1){
-                if(rawX >= 870 && rawX <= 1085 && rawY >= 1520 && rawY <= 1750) {
-                    Message message = Message.obtain();
-                    message.what = 1;
-                    leave_handler_3.sendMessageDelayed(message,300);
-                }else{
-                    num_3 = 0;
-                    flag = true;
-                    Message message = Message.obtain();
-                    message.what = 1;
-                    handler.sendMessageDelayed(message,0);
-                }
-            }
-        }
-    };
-    @SuppressLint("HandlerLeak")
-    Handler handler_2 = new Handler(){
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            if(msg.what == 1){
-                if(num_2 == 0){
-                    num_2++;
-                    Message message = Message.obtain();
-                    message.what = 1;
-                    handler_2.sendMessageDelayed(message,250);
-                }else if(num_2 == 1){
-                    if(rawX >= 595 && rawX <= 810 && rawY >= 1520 && rawY <= 1750) {
-                        num_2++;
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        handler_2.sendMessageDelayed(message,250);
-                    }else{
-                        num_2 = 0;
-                        flag = true;
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        handler.sendMessageDelayed(message,0);
-                    }
-                }else {
-                    if(rawX >= 595 && rawX <= 810 && rawY >= 1520 && rawY <= 1750) {
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        leave_handler_2.sendMessageDelayed(message,0);
-                        password += "2";
-                        num_pwd++;
-                        txt_input_show.setText("已输入"+num_pwd+"个字符");
-                    }else{
-                        num_2 = 0;
-                        flag = true;
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        handler.sendMessageDelayed(message,0);
-                    }
-                }
-            }
-        }
-    };
-    @SuppressLint("HandlerLeak")
-    Handler leave_handler_2 = new Handler(){
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            if(msg.what == 1){
-                if(rawX >= 595 && rawX <= 810 && rawY >= 1520 && rawY <= 1750) {
-                    Message message = Message.obtain();
-                    message.what = 1;
-                    leave_handler_2.sendMessageDelayed(message,300);
-                }else{
-                    num_2 = 0;
                     flag = true;
                     Message message = Message.obtain();
                     message.what = 1;
@@ -947,7 +392,7 @@ public class InputActivity extends AppCompatActivity {
                     message.what = 1;
                     handler_1.sendMessageDelayed(message,250);
                 }else if(num_1 == 1){
-                    if(rawX >= 320 && rawX <= 535 && rawY >= 1520 && rawY <= 1750) {
+                    if(rawX >= 40 && rawX <= 450 && rawY >= 540 && rawY <= 950) {
                         num_1++;
                         Message message = Message.obtain();
                         message.what = 1;
@@ -960,13 +405,15 @@ public class InputActivity extends AppCompatActivity {
                         handler.sendMessageDelayed(message,0);
                     }
                 }else {
-                    if(rawX >= 320 && rawX <= 535 && rawY >= 1520 && rawY <= 1750) {
+                    if(rawX >= 40 && rawX <= 450 && rawY >= 540 && rawY <= 950) {
                         Message message = Message.obtain();
                         message.what = 1;
-                        leave_handler_1.sendMessageDelayed(message,0);
-                        password += "1";
-                        num_pwd++;
-                        txt_input_show.setText("已输入"+num_pwd+"个字符");
+                        num_1 = 0;
+                        rawX = rawY = 0;
+                        flag_chose = true;
+                        handler_chose.sendMessageDelayed(message,0);
+                        pwd_code1 = 1;
+                        changeLayout(true,"1","A","B","C");
                     }else{
                         num_1 = 0;
                         flag = true;
@@ -979,59 +426,41 @@ public class InputActivity extends AppCompatActivity {
         }
     };
     @SuppressLint("HandlerLeak")
-    Handler leave_handler_1 = new Handler(){
+    Handler handler_2 = new Handler(){
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             if(msg.what == 1){
-                if(rawX >= 320 && rawX <= 535 && rawY >= 1520 && rawY <= 1750) {
+                if(num_2 == 0){
+                    num_2++;
                     Message message = Message.obtain();
                     message.what = 1;
-                    leave_handler_1.sendMessageDelayed(message,300);
-                }else{
-                    num_1 = 0;
-                    flag = true;
-                    Message message = Message.obtain();
-                    message.what = 1;
-                    handler.sendMessageDelayed(message,0);
-                }
-            }
-        }
-    };
-    @SuppressLint("HandlerLeak")
-    Handler handler_z = new Handler(){
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            if(msg.what == 1){
-                if(num_z == 0){
-                    num_z++;
-                    Message message = Message.obtain();
-                    message.what = 1;
-                    handler_z.sendMessageDelayed(message,250);
-                }else if(num_z == 1){
-                    if(rawX >= 45 && rawX <= 260 && rawY >= 1520 && rawY <= 1750) {
-                        num_z++;
+                    handler_2.sendMessageDelayed(message,250);
+                }else if(num_2 == 1){
+                    if(rawX >= 510 && rawX <= 920 && rawY >= 540 && rawY <= 950) {
+                        num_2++;
                         Message message = Message.obtain();
                         message.what = 1;
-                        handler_z.sendMessageDelayed(message,250);
+                        handler_2.sendMessageDelayed(message,250);
                     }else{
-                        num_z = 0;
+                        num_2 = 0;
                         flag = true;
                         Message message = Message.obtain();
                         message.what = 1;
                         handler.sendMessageDelayed(message,0);
                     }
                 }else {
-                    if(rawX >= 45 && rawX <= 260 && rawY >= 1520 && rawY <= 1750) {
+                    if(rawX >= 510 && rawX <= 920 && rawY >= 540 && rawY <= 950) {
                         Message message = Message.obtain();
                         message.what = 1;
-                        leave_handler_z.sendMessageDelayed(message,0);
-                        password += "z";
-                        num_pwd++;
-                        txt_input_show.setText("已输入"+num_pwd+"个字符");
+                        num_2 = 0;
+                        rawX = rawY = 0;
+                        flag_chose = true;
+                        handler_chose.sendMessageDelayed(message,0);
+                        pwd_code1 = 2;
+                        changeLayout(true,"2","D","E","F");
                     }else{
-                        num_z = 0;
+                        num_2 = 0;
                         flag = true;
                         Message message = Message.obtain();
                         message.what = 1;
@@ -1042,59 +471,41 @@ public class InputActivity extends AppCompatActivity {
         }
     };
     @SuppressLint("HandlerLeak")
-    Handler leave_handler_z = new Handler(){
+    Handler handler_3 = new Handler(){
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             if(msg.what == 1){
-                if(rawX >= 45 && rawX <= 260 && rawY >= 1520 && rawY <= 1750) {
+                if(num_3 == 0){
+                    num_3++;
                     Message message = Message.obtain();
                     message.what = 1;
-                    leave_handler_z.sendMessageDelayed(message,300);
-                }else{
-                    num_z = 0;
-                    flag = true;
-                    Message message = Message.obtain();
-                    message.what = 1;
-                    handler.sendMessageDelayed(message,0);
-                }
-            }
-        }
-    };
-    @SuppressLint("HandlerLeak")
-    Handler handler_y = new Handler(){
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            if(msg.what == 1){
-                if(num_y == 0){
-                    num_y++;
-                    Message message = Message.obtain();
-                    message.what = 1;
-                    handler_y.sendMessageDelayed(message,250);
-                }else if(num_y == 1){
-                    if(rawX >= 1145 && rawX <= 1360 && rawY >= 1250 && rawY <= 1470) {
-                        num_y++;
+                    handler_3.sendMessageDelayed(message,250);
+                }else if(num_3 == 1){
+                    if(rawX >= 980 && rawX <= 1390 && rawY >= 540 && rawY <= 950) {
+                        num_3++;
                         Message message = Message.obtain();
                         message.what = 1;
-                        handler_y.sendMessageDelayed(message,250);
+                        handler_3.sendMessageDelayed(message,250);
                     }else{
-                        num_y = 0;
+                        num_3 = 0;
                         flag = true;
                         Message message = Message.obtain();
                         message.what = 1;
                         handler.sendMessageDelayed(message,0);
                     }
                 }else {
-                    if(rawX >= 1145 && rawX <= 1360 && rawY >= 1250 && rawY <= 1470) {
+                    if(rawX >= 980 && rawX <= 1390 && rawY >= 540 && rawY <= 950) {
                         Message message = Message.obtain();
                         message.what = 1;
-                        leave_handler_y.sendMessageDelayed(message,0);
-                        password += "y";
-                        num_pwd++;
-                        txt_input_show.setText("已输入"+num_pwd+"个字符");
+                        rawX = rawY = 0;
+                        num_3 = 0;
+                        flag_chose = true;
+                        handler_chose.sendMessageDelayed(message,0);
+                        pwd_code1 = 3;
+                        changeLayout(true,"3","G","H","I");
                     }else{
-                        num_y = 0;
+                        num_3 = 0;
                         flag = true;
                         Message message = Message.obtain();
                         message.what = 1;
@@ -1105,59 +516,41 @@ public class InputActivity extends AppCompatActivity {
         }
     };
     @SuppressLint("HandlerLeak")
-    Handler leave_handler_y = new Handler(){
+    Handler handler_4 = new Handler(){
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             if(msg.what == 1){
-                if(rawX >= 1145 && rawX <= 1360 && rawY >= 1250 && rawY <= 1470) {
+                if(num_4 == 0){
+                    num_4++;
                     Message message = Message.obtain();
                     message.what = 1;
-                    leave_handler_y.sendMessageDelayed(message,300);
-                }else{
-                    num_y = 0;
-                    flag = true;
-                    Message message = Message.obtain();
-                    message.what = 1;
-                    handler.sendMessageDelayed(message,0);
-                }
-            }
-        }
-    };
-    @SuppressLint("HandlerLeak")
-    Handler handler_x = new Handler(){
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            if(msg.what == 1){
-                if(num_x == 0){
-                    num_x++;
-                    Message message = Message.obtain();
-                    message.what = 1;
-                    handler_x.sendMessageDelayed(message,250);
-                }else if(num_x == 1){
-                    if(rawX >= 870 && rawX <= 1085 && rawY >= 1250 && rawY <= 1470) {
-                        num_x++;
+                    handler_4.sendMessageDelayed(message,250);
+                }else if(num_4 == 1){
+                    if(rawX >= 40 && rawX <= 450 && rawY >= 1025 && rawY <= 1450) {
+                        num_4++;
                         Message message = Message.obtain();
                         message.what = 1;
-                        handler_x.sendMessageDelayed(message,250);
+                        handler_4.sendMessageDelayed(message,250);
                     }else{
-                        num_x = 0;
+                        num_4 = 0;
                         flag = true;
                         Message message = Message.obtain();
                         message.what = 1;
                         handler.sendMessageDelayed(message,0);
                     }
                 }else {
-                    if(rawX >= 870 && rawX <= 1085 && rawY >= 1250 && rawY <= 1470) {
+                    if(rawX >= 40 && rawX <= 450 && rawY >= 1025 && rawY <= 1450) {
                         Message message = Message.obtain();
                         message.what = 1;
-                        leave_handler_x.sendMessageDelayed(message,0);
-                        password += "x";
-                        num_pwd++;
-                        txt_input_show.setText("已输入"+num_pwd+"个字符");
+                        num_4 = 0;
+                        rawX = rawY = 0;
+                        flag_chose = true;
+                        handler_chose.sendMessageDelayed(message,0);
+                        pwd_code1 = 4;
+                        changeLayout(true,"4","J","K","L");
                     }else{
-                        num_x = 0;
+                        num_4 = 0;
                         flag = true;
                         Message message = Message.obtain();
                         message.what = 1;
@@ -1168,59 +561,41 @@ public class InputActivity extends AppCompatActivity {
         }
     };
     @SuppressLint("HandlerLeak")
-    Handler leave_handler_x = new Handler(){
+    Handler handler_5 = new Handler(){
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             if(msg.what == 1){
-                if(rawX >= 870 && rawX <= 1085 && rawY >= 1250 && rawY <= 1470) {
+                if(num_5 == 0){
+                    num_5++;
                     Message message = Message.obtain();
                     message.what = 1;
-                    leave_handler_x.sendMessageDelayed(message,300);
-                }else{
-                    num_x = 0;
-                    flag = true;
-                    Message message = Message.obtain();
-                    message.what = 1;
-                    handler.sendMessageDelayed(message,0);
-                }
-            }
-        }
-    };
-    @SuppressLint("HandlerLeak")
-    Handler handler_w = new Handler(){
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            if(msg.what == 1){
-                if(num_w == 0){
-                    num_w++;
-                    Message message = Message.obtain();
-                    message.what = 1;
-                    handler_w.sendMessageDelayed(message,250);
-                }else if(num_w == 1){
-                    if(rawX >= 595 && rawX <= 810 && rawY >= 1250 && rawY <= 1470) {
-                        num_w++;
+                    handler_5.sendMessageDelayed(message,250);
+                }else if(num_5 == 1){
+                    if(rawX >= 510 && rawX <= 920 && rawY >= 1025 && rawY <= 1450) {
+                        num_5++;
                         Message message = Message.obtain();
                         message.what = 1;
-                        handler_w.sendMessageDelayed(message,250);
+                        handler_5.sendMessageDelayed(message,250);
                     }else{
-                        num_w = 0;
+                        num_5 = 0;
                         flag = true;
                         Message message = Message.obtain();
                         message.what = 1;
                         handler.sendMessageDelayed(message,0);
                     }
                 }else {
-                    if(rawX >= 595 && rawX <= 810 && rawY >= 1250 && rawY <= 1470) {
+                    if(rawX >= 510 && rawX <= 920 && rawY >= 1025 && rawY <= 1450) {
                         Message message = Message.obtain();
                         message.what = 1;
-                        leave_handler_w.sendMessageDelayed(message,0);
-                        password += "w";
-                        num_pwd++;
-                        txt_input_show.setText("已输入"+num_pwd+"个字符");
+                        num_5 = 0;
+                        rawX = rawY = 0;
+                        flag_chose = true;
+                        handler_chose.sendMessageDelayed(message,0);
+                        pwd_code1 = 5;
+                        changeLayout(true,"5","M","N","O");
                     }else{
-                        num_w = 0;
+                        num_5 = 0;
                         flag = true;
                         Message message = Message.obtain();
                         message.what = 1;
@@ -1231,59 +606,41 @@ public class InputActivity extends AppCompatActivity {
         }
     };
     @SuppressLint("HandlerLeak")
-    Handler leave_handler_w = new Handler(){
+    Handler handler_6 = new Handler(){
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             if(msg.what == 1){
-                if(rawX >= 595 && rawX <= 810 && rawY >= 1250 && rawY <= 1470){
+                if(num_6 == 0){
+                    num_6++;
                     Message message = Message.obtain();
                     message.what = 1;
-                    leave_handler_w.sendMessageDelayed(message,300);
-                }else{
-                    num_w = 0;
-                    flag = true;
-                    Message message = Message.obtain();
-                    message.what = 1;
-                    handler.sendMessageDelayed(message,0);
-                }
-            }
-        }
-    };
-    @SuppressLint("HandlerLeak")
-    Handler handler_v = new Handler(){
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            if(msg.what == 1){
-                if(num_v == 0){
-                    num_v++;
-                    Message message = Message.obtain();
-                    message.what = 1;
-                    handler_v.sendMessageDelayed(message,250);
-                }else if(num_v == 1){
-                    if(rawX >= 320 && rawX <= 535 && rawY >= 1250 && rawY <= 1470) {
-                        num_v++;
+                    handler_6.sendMessageDelayed(message,250);
+                }else if(num_6 == 1){
+                    if(rawX >= 980 && rawX <= 1390 && rawY >= 1025 && rawY <= 1450) {
+                        num_6++;
                         Message message = Message.obtain();
                         message.what = 1;
-                        handler_v.sendMessageDelayed(message,250);
+                        handler_6.sendMessageDelayed(message,250);
                     }else{
-                        num_v = 0;
+                        num_6 = 0;
                         flag = true;
                         Message message = Message.obtain();
                         message.what = 1;
                         handler.sendMessageDelayed(message,0);
                     }
                 }else {
-                    if(rawX >= 320 && rawX <= 535 && rawY >= 1250 && rawY <= 1470) {
+                    if(rawX >= 980 && rawX <= 1390 && rawY >= 1025 && rawY <= 1450) {
                         Message message = Message.obtain();
                         message.what = 1;
-                        leave_handler_v.sendMessageDelayed(message,0);
-                        password += "v";
-                        num_pwd++;
-                        txt_input_show.setText("已输入"+num_pwd+"个字符");
+                        num_6 = 0;
+                        rawX = rawY = 0;
+                        flag_chose = true;
+                        handler_chose.sendMessageDelayed(message,0);
+                        pwd_code1 = 6;
+                        changeLayout(true,"6","P","Q","R");
                     }else{
-                        num_v = 0;
+                        num_6 = 0;
                         flag = true;
                         Message message = Message.obtain();
                         message.what = 1;
@@ -1294,59 +651,41 @@ public class InputActivity extends AppCompatActivity {
         }
     };
     @SuppressLint("HandlerLeak")
-    Handler leave_handler_v = new Handler(){
+    Handler handler_7 = new Handler(){
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             if(msg.what == 1){
-                if(rawX >= 320 && rawX <= 535 && rawY >= 1250 && rawY <= 1470){
+                if(num_7 == 0){
+                    num_7++;
                     Message message = Message.obtain();
                     message.what = 1;
-                    leave_handler_v.sendMessageDelayed(message,300);
-                }else{
-                    num_v = 0;
-                    flag = true;
-                    Message message = Message.obtain();
-                    message.what = 1;
-                    handler.sendMessageDelayed(message,0);
-                }
-            }
-        }
-    };
-    @SuppressLint("HandlerLeak")
-    Handler handler_u = new Handler(){
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            if(msg.what == 1){
-                if(num_u == 0){
-                    num_u++;
-                    Message message = Message.obtain();
-                    message.what = 1;
-                    handler_u.sendMessageDelayed(message,250);
-                }else if(num_u == 1){
-                    if(rawX >= 45 && rawX <= 260 && rawY >= 1250 && rawY <= 1470) {
-                        num_u++;
+                    handler_7.sendMessageDelayed(message,250);
+                }else if(num_7 == 1){
+                    if(rawX >= 40 && rawX <= 450 && rawY >= 1520 && rawY <= 1940) {
+                        num_7++;
                         Message message = Message.obtain();
                         message.what = 1;
-                        handler_u.sendMessageDelayed(message,250);
+                        handler_7.sendMessageDelayed(message,250);
                     }else{
-                        num_u = 0;
+                        num_7 = 0;
                         flag = true;
                         Message message = Message.obtain();
                         message.what = 1;
                         handler.sendMessageDelayed(message,0);
                     }
                 }else {
-                    if(rawX >= 45 && rawX <= 260 && rawY >= 1250 && rawY <= 1470) {
+                    if(rawX >= 40 && rawX <= 450 && rawY >= 1520 && rawY <= 1940) {
                         Message message = Message.obtain();
                         message.what = 1;
-                        leave_handler_u.sendMessageDelayed(message,0);
-                        password += "u";
-                        num_pwd++;
-                        txt_input_show.setText("已输入"+num_pwd+"个字符");
+                        num_7 = 0;
+                        rawX = rawY = 0;
+                        flag_chose = true;
+                        handler_chose.sendMessageDelayed(message,0);
+                        pwd_code1 = 7;
+                        changeLayout(true,"7","S","T","U");
                     }else{
-                        num_u = 0;
+                        num_7 = 0;
                         flag = true;
                         Message message = Message.obtain();
                         message.what = 1;
@@ -1357,59 +696,41 @@ public class InputActivity extends AppCompatActivity {
         }
     };
     @SuppressLint("HandlerLeak")
-    Handler leave_handler_u = new Handler(){
+    Handler handler_8 = new Handler(){
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             if(msg.what == 1){
-                if(rawX >= 45 && rawX <= 260 && rawY >= 1250 && rawY <= 1470){
+                if(num_8 == 0){
+                    num_8++;
                     Message message = Message.obtain();
                     message.what = 1;
-                    leave_handler_u.sendMessageDelayed(message,300);
-                }else{
-                    num_u = 0;
-                    flag = true;
-                    Message message = Message.obtain();
-                    message.what = 1;
-                    handler.sendMessageDelayed(message,0);
-                }
-            }
-        }
-    };
-    @SuppressLint("HandlerLeak")
-    Handler handler_t = new Handler(){
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            if(msg.what == 1){
-                if(num_t == 0){
-                    num_t++;
-                    Message message = Message.obtain();
-                    message.what = 1;
-                    handler_t.sendMessageDelayed(message,250);
-                }else if(num_t == 1){
-                    if(rawX >= 1145 && rawX <= 1360 && rawY >= 980 && rawY <= 1200) {
-                        num_t++;
+                    handler_8.sendMessageDelayed(message,250);
+                }else if(num_8 == 1){
+                    if(rawX >= 510 && rawX <= 920 && rawY >= 1520 && rawY <= 1940) {
+                        num_8++;
                         Message message = Message.obtain();
                         message.what = 1;
-                        handler_t.sendMessageDelayed(message,250);
+                        handler_8.sendMessageDelayed(message,250);
                     }else{
-                        num_t = 0;
+                        num_8 = 0;
                         flag = true;
                         Message message = Message.obtain();
                         message.what = 1;
                         handler.sendMessageDelayed(message,0);
                     }
                 }else {
-                    if(rawX >= 1145 && rawX <= 1360 && rawY >= 980 && rawY <= 1200) {
+                    if(rawX >= 510 && rawX <= 920 && rawY >= 1520 && rawY <= 1940) {
                         Message message = Message.obtain();
                         message.what = 1;
-                        leave_handler_t.sendMessageDelayed(message,0);
-                        password += "t";
-                        num_pwd++;
-                        txt_input_show.setText("已输入"+num_pwd+"个字符");
+                        num_8 = 0;
+                        rawX = rawY = 0;
+                        flag_chose = true;
+                        handler_chose.sendMessageDelayed(message,0);
+                        pwd_code1 = 8;
+                        changeLayout(true,"8","V","W","X");
                     }else{
-                        num_t = 0;
+                        num_8 = 0;
                         flag = true;
                         Message message = Message.obtain();
                         message.what = 1;
@@ -1420,59 +741,41 @@ public class InputActivity extends AppCompatActivity {
         }
     };
     @SuppressLint("HandlerLeak")
-    Handler leave_handler_t = new Handler(){
+    Handler handler_9 = new Handler(){
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             if(msg.what == 1){
-                if(rawX >= 1145 && rawX <= 1360 && rawY >= 980 && rawY <= 1200){
+                if(num_9 == 0){
+                    num_9++;
                     Message message = Message.obtain();
                     message.what = 1;
-                    leave_handler_t.sendMessageDelayed(message,300);
-                }else{
-                    num_t = 0;
-                    flag = true;
-                    Message message = Message.obtain();
-                    message.what = 1;
-                    handler.sendMessageDelayed(message,0);
-                }
-            }
-        }
-    };
-    @SuppressLint("HandlerLeak")
-    Handler handler_s = new Handler(){
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            if(msg.what == 1){
-                if(num_s == 0){
-                    num_s++;
-                    Message message = Message.obtain();
-                    message.what = 1;
-                    handler_s.sendMessageDelayed(message,250);
-                }else if(num_s == 1){
-                    if(rawX >= 870 && rawX <= 1085 && rawY >= 980 && rawY <= 1200) {
-                        num_s++;
+                    handler_9.sendMessageDelayed(message,250);
+                }else if(num_9 == 1){
+                    if(rawX >= 980 && rawX <= 1390 && rawY >= 1520 && rawY <= 1940) {
+                        num_9++;
                         Message message = Message.obtain();
                         message.what = 1;
-                        handler_s.sendMessageDelayed(message,250);
+                        handler_9.sendMessageDelayed(message,250);
                     }else{
-                        num_s = 0;
+                        num_9 = 0;
                         flag = true;
                         Message message = Message.obtain();
                         message.what = 1;
                         handler.sendMessageDelayed(message,0);
                     }
                 }else {
-                    if(rawX >= 870 && rawX <= 1085 && rawY >= 980 && rawY <= 1200) {
+                    if(rawX >= 980 && rawX <= 1390 && rawY >= 1520 && rawY <= 1940) {
                         Message message = Message.obtain();
                         message.what = 1;
-                        leave_handler_s.sendMessageDelayed(message,0);
-                        password += "s";
-                        num_pwd++;
-                        txt_input_show.setText("已输入"+num_pwd+"个字符");
+                        num_9 = 0;
+                        rawX = rawY = 0;
+                        flag_chose = true;
+                        handler_chose.sendMessageDelayed(message,0);
+                        pwd_code1 = 9;
+                        changeLayout(true,"9","Y","Z","0");
                     }else{
-                        num_s = 0;
+                        num_9 = 0;
                         flag = true;
                         Message message = Message.obtain();
                         message.what = 1;
@@ -1483,59 +786,44 @@ public class InputActivity extends AppCompatActivity {
         }
     };
     @SuppressLint("HandlerLeak")
-    Handler leave_handler_s = new Handler(){
+    Handler handler_clear = new Handler(){
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             if(msg.what == 1){
-                if(rawX >= 870 && rawX <= 1085 && rawY >= 980 && rawY <= 1200){
+                if(num_clear == 0){
+                    num_clear++;
                     Message message = Message.obtain();
                     message.what = 1;
-                    leave_handler_s.sendMessageDelayed(message,300);
-                }else{
-                    num_s = 0;
-                    flag = true;
-                    Message message = Message.obtain();
-                    message.what = 1;
-                    handler.sendMessageDelayed(message,0);
-                }
-            }
-        }
-    };
-    @SuppressLint("HandlerLeak")
-    Handler handler_r = new Handler(){
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            if(msg.what == 1){
-                if(num_r == 0){
-                    num_r++;
-                    Message message = Message.obtain();
-                    message.what = 1;
-                    handler_r.sendMessageDelayed(message,250);
-                }else if(num_r == 1){
-                    if(rawX >= 595 && rawX <= 810 && rawY >= 980 && rawY <= 1200) {
-                        num_r++;
+                    handler_clear.sendMessageDelayed(message,250);
+                }else if(num_clear == 1){
+                    if(rawX >= 1100 && rawX <= 1400 && rawY >= 120 && rawY <= 400) {
+                        num_clear++;
                         Message message = Message.obtain();
                         message.what = 1;
-                        handler_r.sendMessageDelayed(message,250);
+                        handler_clear.sendMessageDelayed(message,250);
                     }else{
-                        num_r = 0;
+                        num_clear = 0;
                         flag = true;
                         Message message = Message.obtain();
                         message.what = 1;
                         handler.sendMessageDelayed(message,0);
                     }
                 }else {
-                    if(rawX >= 595 && rawX <= 810 && rawY >= 980 && rawY <= 1200) {
+                    if(rawX >= 1100 && rawX <= 1400 && rawY >= 120 && rawY <= 400) {
                         Message message = Message.obtain();
                         message.what = 1;
-                        leave_handler_r.sendMessageDelayed(message,0);
-                        password += "r";
-                        num_pwd++;
-                        txt_input_show.setText("已输入"+num_pwd+"个字符");
+                        num_clear = 0;
+                        password = "";
+                        pwd_code1 = pwd_code2 = 0;
+                        rawX = rawY = 0;
+                        txt_input_show.setText("");
+                        flag = true;
+                        flag_chose = false;
+                        changeLayout(false,"","","","");
+                        handler.sendMessageDelayed(message,0);
                     }else{
-                        num_r = 0;
+                        num_clear = 0;
                         flag = true;
                         Message message = Message.obtain();
                         message.what = 1;
@@ -1546,1092 +834,281 @@ public class InputActivity extends AppCompatActivity {
         }
     };
     @SuppressLint("HandlerLeak")
-    Handler leave_handler_r = new Handler(){
+    Handler handler_chose = new Handler(){
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
-            if(msg.what == 1){
-                if(rawX >= 595 && rawX <= 810 && rawY >= 980 && rawY <= 1200){
-                    Message message = Message.obtain();
-                    message.what = 1;
-                    leave_handler_r.sendMessageDelayed(message,300);
-                }else{
-                    num_r = 0;
-                    flag = true;
-                    Message message = Message.obtain();
-                    message.what = 1;
-                    handler.sendMessageDelayed(message,0);
-                }
-            }
-        }
-    };
-    @SuppressLint("HandlerLeak")
-    Handler handler_q = new Handler(){
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            if(msg.what == 1){
-                if(num_q == 0){
-                    num_q++;
-                    Message message = Message.obtain();
-                    message.what = 1;
-                    handler_q.sendMessageDelayed(message,250);
-                }else if(num_q == 1){
-                    if(rawX >= 320 && rawX <= 535 && rawY >= 980 && rawY <= 1200) {
-                        num_q++;
+            if(flag_chose) {
+                if (msg.what == 1) {
+                    if (rawX >= 510 && rawX <= 920 && rawY >= 540 && rawY <= 950) {
+                        flag_chose = false;
                         Message message = Message.obtain();
                         message.what = 1;
-                        handler_q.sendMessageDelayed(message,250);
-                    }else{
-                        num_q = 0;
-                        flag = true;
+                        handler_chose_1.sendMessageDelayed(message, 0);
+                    } else if (rawX >= 40 && rawX <= 450 && rawY >= 1025 && rawY <= 1450) {
+                        flag_chose = false;
                         Message message = Message.obtain();
                         message.what = 1;
-                        handler.sendMessageDelayed(message,0);
+                        handler_chose_2.sendMessageDelayed(message, 0);
+                    } else if (rawX >= 510 && rawX <= 920 && rawY >= 1520 && rawY <= 1940) {
+                        flag_chose = false;
+                        Message message = Message.obtain();
+                        message.what = 1;
+                        handler_chose_3.sendMessageDelayed(message, 0);
+                    } else if (rawX >= 980 && rawX <= 1390 && rawY >= 1025 && rawY <= 1450) {
+                        flag_chose = false;
+                        Message message = Message.obtain();
+                        message.what = 1;
+                        handler_chose_4.sendMessageDelayed(message, 0);
+                    } else if (rawX >= 510 && rawX <= 920 && rawY >= 1025 && rawY <= 1450) {
+                        flag_chose = false;
+                        Message message = Message.obtain();
+                        message.what = 1;
+                        handler_chose_return.sendMessageDelayed(message, 0);
+                    } else if (rawX >= 0 && rawX <= 350 && rawY >= 2040 && rawY <= 2250) {
+                        flag_chose = false;
+                        Message message = Message.obtain();
+                        message.what = 1;
+                        handler_submit.sendMessageDelayed(message, 0);
+                    }else if (rawX >= 1070 && rawX <= 1440 && rawY >= 2040 && rawY <= 2250) {
+                        flag_chose = false;
+                        Message message = Message.obtain();
+                        message.what = 1;
+                        handler_return.sendMessageDelayed(message, 0);
+                    }else if (rawX >= 1100 && rawX <= 1400 && rawY >= 120 && rawY <= 400) {
+                        flag_chose = false;
+                        Message message = Message.obtain();
+                        message.what = 1;
+                        handler_clear.sendMessageDelayed(message, 0);
                     }
-                }else {
-                    if(rawX >= 320 && rawX <= 535 && rawY >= 980 && rawY <= 1200) {
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        leave_handler_q.sendMessageDelayed(message,0);
-                        password += "q";
-                        num_pwd++;
-                        txt_input_show.setText("已输入"+num_pwd+"个字符");
-                    }else{
-                        num_q = 0;
-                        flag = true;
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        handler.sendMessageDelayed(message,0);
-                    }
+                    Message message = Message.obtain();
+                    message.what = 1;
+                    handler_chose.sendMessageDelayed(message, 300);
                 }
             }
         }
     };
     @SuppressLint("HandlerLeak")
-    Handler leave_handler_q = new Handler(){
+    Handler handler_chose_1 = new Handler(){
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             if(msg.what == 1){
-                if(rawX >= 320 && rawX <= 535 && rawY >= 980 && rawY <= 1200){
+                if(num_chose_1 == 0){
+                    num_chose_1++;
                     Message message = Message.obtain();
                     message.what = 1;
-                    leave_handler_q.sendMessageDelayed(message,300);
-                }else{
-                    num_q = 0;
-                    flag = true;
-                    Message message = Message.obtain();
-                    message.what = 1;
-                    handler.sendMessageDelayed(message,0);
-                }
-            }
-        }
-    };
-    @SuppressLint("HandlerLeak")
-    Handler handler_p = new Handler(){
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            if(msg.what == 1){
-                if(num_p == 0){
-                    num_p++;
-                    Message message = Message.obtain();
-                    message.what = 1;
-                    handler_p.sendMessageDelayed(message,250);
-                }else if(num_p == 1){
-                    if(rawX >= 45 && rawX <= 260 && rawY >= 980 && rawY <= 1200) {
-                        num_p++;
+                    handler_chose_1.sendMessageDelayed(message,250);
+                }else if(num_chose_1 == 1){
+                    if(rawX >= 510 && rawX <= 920 && rawY >= 540 && rawY <= 950) {
+                        num_chose_1++;
                         Message message = Message.obtain();
                         message.what = 1;
-                        handler_p.sendMessageDelayed(message,250);
+                        handler_chose_1.sendMessageDelayed(message,250);
                     }else{
-                        num_p = 0;
-                        flag = true;
+                        num_chose_1 = 0;
+                        flag_chose = true;
                         Message message = Message.obtain();
                         message.what = 1;
-                        handler.sendMessageDelayed(message,0);
+                        handler_chose.sendMessageDelayed(message,0);
                     }
                 }else {
-                    if(rawX >= 45 && rawX <= 260 && rawY >= 980 && rawY <= 1200) {
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        leave_handler_p.sendMessageDelayed(message,0);
-                        password += "p";
-                        num_pwd++;
-                        txt_input_show.setText("已输入"+num_pwd+"个字符");
-                    }else{
-                        num_p = 0;
+                    if(rawX >= 510 && rawX <= 920 && rawY >= 540 && rawY <= 950) {
                         flag = true;
+                        rawX = rawY = 0;
+                        num_chose_1 = 0;
                         Message message = Message.obtain();
                         message.what = 1;
+                        pwd_code2 = 1;
+                        toPwd();
                         handler.sendMessageDelayed(message,0);
+                    }else{
+                        num_chose_1 = 0;
+                        flag_chose = true;
+                        Message message = Message.obtain();
+                        message.what = 1;
+                        handler_chose.sendMessageDelayed(message,0);
                     }
                 }
             }
         }
     };
     @SuppressLint("HandlerLeak")
-    Handler leave_handler_p = new Handler(){
+    Handler handler_chose_2 = new Handler(){
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             if(msg.what == 1){
-                if(rawX >= 45 && rawX <= 260 && rawY >= 980 && rawY <= 1200){
+                if(num_chose_2 == 0){
+                    num_chose_2++;
                     Message message = Message.obtain();
                     message.what = 1;
-                    leave_handler_p.sendMessageDelayed(message,300);
-                }else{
-                    num_p = 0;
-                    flag = true;
-                    Message message = Message.obtain();
-                    message.what = 1;
-                    handler.sendMessageDelayed(message,0);
-                }
-            }
-        }
-    };
-    @SuppressLint("HandlerLeak")
-    Handler handler_a = new Handler(){
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            if(msg.what == 1){
-                if(num_a == 0){
-                    num_a++;
-                    Message message = Message.obtain();
-                    message.what = 1;
-                    handler_a.sendMessageDelayed(message,250);
-                }else if(num_a == 1){
-                    if(rawX >= 45 && rawX <= 260 && rawY >= 125 && rawY <= 340) {
-                        num_a++;
+                    handler_chose_2.sendMessageDelayed(message,250);
+                }else if(num_chose_2 == 1){
+                    if(rawX >= 40 && rawX <= 450 && rawY >= 1025 && rawY <= 1450) {
+                        num_chose_2++;
                         Message message = Message.obtain();
                         message.what = 1;
-                        handler_a.sendMessageDelayed(message,250);
+                        handler_chose_2.sendMessageDelayed(message,250);
                     }else{
-                        num_a = 0;
-                        flag = true;
+                        num_chose_2 = 0;
+                        flag_chose = true;
                         Message message = Message.obtain();
                         message.what = 1;
-                        handler.sendMessageDelayed(message,0);
+                        handler_chose.sendMessageDelayed(message,0);
                     }
                 }else {
-                    if(rawX >= 45 && rawX <= 260 && rawY >= 125 && rawY <= 340) {
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        leave_handler_a.sendMessageDelayed(message,0);
-                        password += "a";
-                        num_pwd++;
-                        txt_input_show.setText("已输入"+num_pwd+"个字符");
-                    }else{
-                        num_a = 0;
+                    if(rawX >= 40 && rawX <= 450 && rawY >= 1025 && rawY <= 1450) {
                         flag = true;
+                        rawX = rawY = 0;
+                        num_chose_2 = 0;
                         Message message = Message.obtain();
                         message.what = 1;
+                        pwd_code2 = 2;
+                        toPwd();
                         handler.sendMessageDelayed(message,0);
+                    }else{
+                        num_chose_2 = 0;
+                        flag_chose = true;
+                        Message message = Message.obtain();
+                        message.what = 1;
+                        handler_chose.sendMessageDelayed(message,0);
                     }
                 }
             }
         }
     };
     @SuppressLint("HandlerLeak")
-    Handler leave_handler_a = new Handler(){
+    Handler handler_chose_3 = new Handler(){
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             if(msg.what == 1){
-                if(rawX >= 45 && rawX <= 260 && rawY >= 125 && rawY <= 340){
+                if(num_chose_3 == 0){
+                    num_chose_3++;
                     Message message = Message.obtain();
                     message.what = 1;
-                    leave_handler_a.sendMessageDelayed(message,300);
-                }else{
-                    num_a = 0;
-                    flag = true;
-                    Message message = Message.obtain();
-                    message.what = 1;
-                    handler.sendMessageDelayed(message,0);
-                }
-            }
-        }
-    };
-    @SuppressLint("HandlerLeak")
-    Handler handler_b = new Handler(){
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            if(msg.what == 1){
-                if(num_b == 0){
-                    num_b++;
-                    Message message = Message.obtain();
-                    message.what = 1;
-                    handler_b.sendMessageDelayed(message,250);
-                }else if(num_b == 1){
-                    if(rawX >= 320 && rawX <= 545 && rawY >= 125 && rawY <= 340) {
-                        num_b++;
+                    handler_chose_3.sendMessageDelayed(message,250);
+                }else if(num_chose_3 == 1){
+                    if(rawX >= 510 && rawX <= 920 && rawY >= 1520 && rawY <= 1940) {
+                        num_chose_3++;
                         Message message = Message.obtain();
                         message.what = 1;
-                        handler_b.sendMessageDelayed(message,250);
+                        handler_chose_3.sendMessageDelayed(message,250);
                     }else{
-                        num_b = 0;
-                        flag = true;
+                        num_chose_3 = 0;
+                        flag_chose = true;
                         Message message = Message.obtain();
                         message.what = 1;
-                        handler.sendMessageDelayed(message,0);
+                        handler_chose.sendMessageDelayed(message,0);
                     }
                 }else {
-                    if(rawX >= 320 && rawX <= 545 && rawY >= 125 && rawY <= 340) {
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        leave_handler_b.sendMessageDelayed(message,0);
-                        password += "b";
-                        num_pwd++;
-                        txt_input_show.setText("已输入"+num_pwd+"个字符");
-                    }else{
-                        num_b = 0;
+                    if(rawX >= 510 && rawX <= 920 && rawY >= 1520 && rawY <= 1940) {
                         flag = true;
+                        num_chose_3 = 0;
+                        rawX = rawY = 0;
                         Message message = Message.obtain();
                         message.what = 1;
+                        pwd_code2 = 3;
+                        toPwd();
                         handler.sendMessageDelayed(message,0);
+                    }else{
+                        num_chose_3 = 0;
+                        flag_chose = true;
+                        Message message = Message.obtain();
+                        message.what = 1;
+                        handler_chose.sendMessageDelayed(message,0);
                     }
                 }
             }
         }
     };
     @SuppressLint("HandlerLeak")
-    Handler leave_handler_b = new Handler(){
+    Handler handler_chose_4 = new Handler(){
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             if(msg.what == 1){
-                if(rawX >= 320 && rawX <= 545 && rawY >= 125 && rawY <= 340){
+                if(num_chose_4 == 0){
+                    num_chose_4++;
                     Message message = Message.obtain();
                     message.what = 1;
-                    leave_handler_b.sendMessageDelayed(message,300);
-                }else{
-                    num_b = 0;
-                    flag = true;
-                    Message message = Message.obtain();
-                    message.what = 1;
-                    handler.sendMessageDelayed(message,0);
-                }
-            }
-        }
-    };
-    @SuppressLint("HandlerLeak")
-    Handler handler_c = new Handler(){
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            if(msg.what == 1){
-                if(num_c == 0){
-                    num_c++;
-                    Message message = Message.obtain();
-                    message.what = 1;
-                    handler_c.sendMessageDelayed(message,250);
-                }else if(num_c == 1){
-                    if(rawX >= 595 && rawX <= 810 && rawY >= 125 && rawY <= 340) {
-                        num_c++;
+                    handler_chose_4.sendMessageDelayed(message,250);
+                }else if(num_chose_4 == 1){
+                    if(rawX >= 980 && rawX <= 1390 && rawY >= 1025 && rawY <= 1450) {
+                        num_chose_4++;
                         Message message = Message.obtain();
                         message.what = 1;
-                        handler_c.sendMessageDelayed(message,250);
+                        handler_chose_4.sendMessageDelayed(message,250);
                     }else{
-                        num_c = 0;
-                        flag = true;
+                        num_chose_4 = 0;
+                        flag_chose = true;
                         Message message = Message.obtain();
                         message.what = 1;
-                        handler.sendMessageDelayed(message,0);
+                        handler_chose.sendMessageDelayed(message,0);
                     }
                 }else {
-                    if(rawX >= 595 && rawX <= 810 && rawY >= 125 && rawY <= 340) {
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        leave_handler_c.sendMessageDelayed(message,0);
-                        password += "c";
-                        num_pwd++;
-                        txt_input_show.setText("已输入"+num_pwd+"个字符");
-                    }else{
-                        num_c = 0;
+                    if(rawX >= 980 && rawX <= 1390 && rawY >= 1025 && rawY <= 1450) {
                         flag = true;
+                        rawX = rawY = 0;
+                        num_chose_4 = 0;
                         Message message = Message.obtain();
                         message.what = 1;
+                        pwd_code2 = 4;
+                        toPwd();
                         handler.sendMessageDelayed(message,0);
+                    }else{
+                        num_chose_4 = 0;
+                        flag_chose = true;
+                        Message message = Message.obtain();
+                        message.what = 1;
+                        handler_chose.sendMessageDelayed(message,0);
                     }
                 }
             }
         }
     };
     @SuppressLint("HandlerLeak")
-    Handler leave_handler_c = new Handler(){
+    Handler handler_chose_return = new Handler(){
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             if(msg.what == 1){
-                if(rawX >= 595 && rawX <= 810 && rawY >= 125 && rawY <= 340){
+                if(num_chose_return == 0){
+                    num_chose_return++;
                     Message message = Message.obtain();
                     message.what = 1;
-                    leave_handler_c.sendMessageDelayed(message,300);
-                }else{
-                    num_c = 0;
-                    flag = true;
-                    Message message = Message.obtain();
-                    message.what = 1;
-                    handler.sendMessageDelayed(message,0);
-                }
-            }
-        }
-    };
-    @SuppressLint("HandlerLeak")
-    Handler handler_d = new Handler(){
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            if(msg.what == 1){
-                if(num_d == 0){
-                    num_d++;
-                    Message message = Message.obtain();
-                    message.what = 1;
-                    handler_d.sendMessageDelayed(message,250);
-                }else if(num_d == 1){
-                    if(rawX >= 870 && rawX <= 1085 && rawY >= 125 && rawY <= 340) {
-                        num_d++;
+                    handler_chose_return.sendMessageDelayed(message,250);
+                }else if(num_chose_return == 1){
+                    if(rawX >= 510 && rawX <= 920 && rawY >= 1025 && rawY <= 1450) {
+                        num_chose_return++;
                         Message message = Message.obtain();
                         message.what = 1;
-                        handler_d.sendMessageDelayed(message,250);
+                        handler_chose_return.sendMessageDelayed(message,250);
                     }else{
-                        num_d = 0;
-                        flag = true;
+                        num_chose_return = 0;
+                        flag_chose = true;
                         Message message = Message.obtain();
                         message.what = 1;
-                        handler.sendMessageDelayed(message,0);
+                        handler_chose.sendMessageDelayed(message,0);
                     }
                 }else {
-                    if(rawX >= 870 && rawX <= 1085 && rawY >= 125 && rawY <= 340) {
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        leave_handler_d.sendMessageDelayed(message,0);
-                        password += "d";
-                        num_pwd++;
-                        txt_input_show.setText("已输入"+num_pwd+"个字符");
-                    }else{
-                        num_d = 0;
+                    if(rawX >= 510 && rawX <= 920 && rawY >= 1025 && rawY <= 1450) {
+                        pwd_code1 = pwd_code2 = 0;
+                        rawX = rawY = 0;
+                        changeLayout(false,"","","","");
                         flag = true;
+                        num_chose_return = 0;
                         Message message = Message.obtain();
                         message.what = 1;
                         handler.sendMessageDelayed(message,0);
-                    }
-                }
-            }
-        }
-    };
-    @SuppressLint("HandlerLeak")
-    Handler leave_handler_d = new Handler(){
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            if(msg.what == 1){
-                if(rawX >= 870 && rawX <= 1085 && rawY >= 125 && rawY <= 340){
-                    Message message = Message.obtain();
-                    message.what = 1;
-                    leave_handler_d.sendMessageDelayed(message,300);
-                }else{
-                    num_d = 0;
-                    flag = true;
-                    Message message = Message.obtain();
-                    message.what = 1;
-                    handler.sendMessageDelayed(message,0);
-                }
-            }
-        }
-    };
-    @SuppressLint("HandlerLeak")
-    Handler handler_e = new Handler(){
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            if(msg.what == 1){
-                if(num_e == 0){
-                    num_e++;
-                    Message message = Message.obtain();
-                    message.what = 1;
-                    handler_e.sendMessageDelayed(message,250);
-                }else if(num_e == 1){
-                    if(rawX >= 1145 && rawX <= 1360 && rawY >= 125 && rawY <= 340) {
-                        num_e++;
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        handler_e.sendMessageDelayed(message,250);
                     }else{
-                        num_e = 0;
-                        flag = true;
+                        num_chose_return = 0;
+                        flag_chose = true;
                         Message message = Message.obtain();
                         message.what = 1;
-                        handler.sendMessageDelayed(message,0);
+                        handler_chose.sendMessageDelayed(message,0);
                     }
-                }else {
-                    if(rawX >= 1145 && rawX <= 1360 && rawY >= 125 && rawY <= 340) {
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        leave_handler_e.sendMessageDelayed(message,0);
-                        password += "e";
-                        num_pwd++;
-                        txt_input_show.setText("已输入"+num_pwd+"个字符");
-                    }else{
-                        num_e = 0;
-                        flag = true;
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        handler.sendMessageDelayed(message,0);
-                    }
-                }
-            }
-        }
-    };
-    @SuppressLint("HandlerLeak")
-    Handler leave_handler_e = new Handler(){
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            if(msg.what == 1){
-                if(rawX >= 1145 && rawX <= 1360 && rawY >= 125 && rawY <= 340){
-                    Message message = Message.obtain();
-                    message.what = 1;
-                    leave_handler_e.sendMessageDelayed(message,300);
-                }else{
-                    num_e = 0;
-                    flag = true;
-                    Message message = Message.obtain();
-                    message.what = 1;
-                    handler.sendMessageDelayed(message,0);
-                }
-            }
-        }
-    };
-    @SuppressLint("HandlerLeak")
-    Handler handler_f = new Handler(){
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            if(msg.what == 1){
-                if(num_f == 0){
-                    num_f++;
-                    Message message = Message.obtain();
-                    message.what = 1;
-                    handler_f.sendMessageDelayed(message,250);
-                }else if(num_f == 1){
-                    if(rawX >= 45 && rawX <= 260 && rawY >= 410 && rawY <= 625) {
-                        num_f++;
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        handler_f.sendMessageDelayed(message,250);
-                    }else{
-                        num_f = 0;
-                        flag = true;
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        handler.sendMessageDelayed(message,0);
-                    }
-                }else {
-                    if(rawX >= 45 && rawX <= 260 && rawY >= 410 && rawY <= 625) {
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        leave_handler_f.sendMessageDelayed(message,0);
-                        password += "f";
-                        num_pwd++;
-                        txt_input_show.setText("已输入"+num_pwd+"个字符");
-                    }else{
-                        num_f = 0;
-                        flag = true;
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        handler.sendMessageDelayed(message,0);
-                    }
-                }
-            }
-        }
-    };
-    @SuppressLint("HandlerLeak")
-    Handler leave_handler_f = new Handler(){
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            if(msg.what == 1){
-                if(rawX >= 45 && rawX <= 260 && rawY >= 410 && rawY <= 625){
-                    Message message = Message.obtain();
-                    message.what = 1;
-                    leave_handler_f.sendMessageDelayed(message,300);
-                }else{
-                    num_f = 0;
-                    flag = true;
-                    Message message = Message.obtain();
-                    message.what = 1;
-                    handler.sendMessageDelayed(message,0);
-                }
-            }
-        }
-    };
-    @SuppressLint("HandlerLeak")
-    Handler handler_g = new Handler(){
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            if(msg.what == 1){
-                if(num_g == 0){
-                    num_g++;
-                    Message message = Message.obtain();
-                    message.what = 1;
-                    handler_g.sendMessageDelayed(message,250);
-                }else if(num_g == 1){
-                    if(rawX >= 320 && rawX <= 535 && rawY >= 410 && rawY <= 625) {
-                        num_g++;
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        handler_g.sendMessageDelayed(message,250);
-                    }else{
-                        num_g = 0;
-                        flag = true;
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        handler.sendMessageDelayed(message,0);
-                    }
-                }else {
-                    if(rawX >= 320 && rawX <= 535 && rawY >= 410 && rawY <= 625) {
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        leave_handler_g.sendMessageDelayed(message,0);
-                        password += "g";
-                        num_pwd++;
-                        txt_input_show.setText("已输入"+num_pwd+"个字符");
-                    }else{
-                        num_g = 0;
-                        flag = true;
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        handler.sendMessageDelayed(message,0);
-                    }
-                }
-            }
-        }
-    };
-    @SuppressLint("HandlerLeak")
-    Handler leave_handler_g = new Handler(){
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            if(msg.what == 1){
-                if(rawX >= 320 && rawX <= 535 && rawY >= 410 && rawY <= 625){
-                    Message message = Message.obtain();
-                    message.what = 1;
-                    leave_handler_g.sendMessageDelayed(message,300);
-                }else{
-                    num_g = 0;
-                    flag = true;
-                    Message message = Message.obtain();
-                    message.what = 1;
-                    handler.sendMessageDelayed(message,0);
-                }
-            }
-        }
-    };
-    @SuppressLint("HandlerLeak")
-    Handler handler_h = new Handler(){
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            if(msg.what == 1){
-                if(num_h == 0){
-                    num_h++;
-                    Message message = Message.obtain();
-                    message.what = 1;
-                    handler_h.sendMessageDelayed(message,250);
-                }else if(num_h == 1){
-                    if(rawX >= 595 && rawX <= 810 && rawY >= 410 && rawY <= 625) {
-                        num_h++;
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        handler_h.sendMessageDelayed(message,250);
-                    }else{
-                        num_h = 0;
-                        flag = true;
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        handler.sendMessageDelayed(message,0);
-                    }
-                }else {
-                    if(rawX >= 595 && rawX <= 810 && rawY >= 410 && rawY <= 625) {
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        leave_handler_h.sendMessageDelayed(message,0);
-                        password += "h";
-                        num_pwd++;
-                        txt_input_show.setText("已输入"+num_pwd+"个字符");
-                    }else{
-                        num_h = 0;
-                        flag = true;
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        handler.sendMessageDelayed(message,0);
-                    }
-                }
-            }
-        }
-    };
-    @SuppressLint("HandlerLeak")
-    Handler leave_handler_h = new Handler(){
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            if(msg.what == 1){
-                if(rawX >= 595 && rawX <= 810 && rawY >= 410 && rawY <= 625){
-                    Message message = Message.obtain();
-                    message.what = 1;
-                    leave_handler_h.sendMessageDelayed(message,300);
-                }else{
-                    num_h = 0;
-                    flag = true;
-                    Message message = Message.obtain();
-                    message.what = 1;
-                    handler.sendMessageDelayed(message,0);
-                }
-            }
-        }
-    };
-    @SuppressLint("HandlerLeak")
-    Handler handler_i = new Handler(){
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            if(msg.what == 1){
-                if(num_i == 0){
-                    num_i++;
-                    Message message = Message.obtain();
-                    message.what = 1;
-                    handler_i.sendMessageDelayed(message,250);
-                }else if(num_i == 1){
-                    if(rawX >= 870 && rawX <= 1085 && rawY >= 410 && rawY <= 625) {
-                        num_i++;
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        handler_i.sendMessageDelayed(message,250);
-                    }else{
-                        num_i = 0;
-                        flag = true;
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        handler.sendMessageDelayed(message,0);
-                    }
-                }else {
-                    if(rawX >= 870 && rawX <= 1085 && rawY >= 410 && rawY <= 625) {
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        leave_handler_i.sendMessageDelayed(message,0);
-                        password += "i";
-                        num_pwd++;
-                        txt_input_show.setText("已输入"+num_pwd+"个字符");
-                    }else{
-                        num_i = 0;
-                        flag = true;
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        handler.sendMessageDelayed(message,0);
-                    }
-                }
-            }
-        }
-    };
-    @SuppressLint("HandlerLeak")
-    Handler leave_handler_i = new Handler(){
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            if(msg.what == 1){
-                if(rawX >= 870 && rawX <= 1085 && rawY >= 410 && rawY <= 625){
-                    Message message = Message.obtain();
-                    message.what = 1;
-                    leave_handler_i.sendMessageDelayed(message,300);
-                }else{
-                    num_i = 0;
-                    flag = true;
-                    Message message = Message.obtain();
-                    message.what = 1;
-                    handler.sendMessageDelayed(message,0);
-                }
-            }
-        }
-    };
-    @SuppressLint("HandlerLeak")
-    Handler handler_j = new Handler(){
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            if(msg.what == 1){
-                if(num_j == 0){
-                    num_j++;
-                    Message message = Message.obtain();
-                    message.what = 1;
-                    handler_j.sendMessageDelayed(message,250);
-                }else if(num_j == 1){
-                    if(rawX >= 1145 && rawX <= 1360 && rawY >= 410 && rawY <= 625) {
-                        num_j++;
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        handler_j.sendMessageDelayed(message,250);
-                    }else{
-                        num_j = 0;
-                        flag = true;
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        handler.sendMessageDelayed(message,0);
-                    }
-                }else {
-                    if(rawX >= 1145 && rawX <= 1360 && rawY >= 410 && rawY <= 625) {
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        leave_handler_j.sendMessageDelayed(message,0);
-                        password += "j";
-                        num_pwd++;
-                        txt_input_show.setText("已输入"+num_pwd+"个字符");
-                    }else{
-                        num_j = 0;
-                        flag = true;
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        handler.sendMessageDelayed(message,0);
-                    }
-                }
-            }
-        }
-    };
-    @SuppressLint("HandlerLeak")
-    Handler leave_handler_j = new Handler(){
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            if(msg.what == 1){
-                if(rawX >= 1145 && rawX <= 1360 && rawY >= 410 && rawY <= 625){
-                    Message message = Message.obtain();
-                    message.what = 1;
-                    leave_handler_j.sendMessageDelayed(message,300);
-                }else{
-                    num_j = 0;
-                    flag = true;
-                    Message message = Message.obtain();
-                    message.what = 1;
-                    handler.sendMessageDelayed(message,0);
-                }
-            }
-        }
-    };
-    @SuppressLint("HandlerLeak")
-    Handler handler_k = new Handler(){
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            if(msg.what == 1){
-                if(num_k == 0){
-                    num_k++;
-                    Message message = Message.obtain();
-                    message.what = 1;
-                    handler_k.sendMessageDelayed(message,250);
-                }else if(num_k == 1){
-                    if(rawX >= 45 && rawX <= 260 && rawY >= 690 && rawY <= 910) {
-                        num_k++;
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        handler_k.sendMessageDelayed(message,250);
-                    }else{
-                        num_k = 0;
-                        flag = true;
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        handler.sendMessageDelayed(message,0);
-                    }
-                }else {
-                    if(rawX >= 45 && rawX <= 260 && rawY >= 690 && rawY <= 910) {
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        leave_handler_k.sendMessageDelayed(message,0);
-                        password += "k";
-                        num_pwd++;
-                        txt_input_show.setText("已输入"+num_pwd+"个字符");
-                    }else{
-                        num_k = 0;
-                        flag = true;
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        handler.sendMessageDelayed(message,0);
-                    }
-                }
-            }
-        }
-    };
-    @SuppressLint("HandlerLeak")
-    Handler leave_handler_k = new Handler(){
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            if(msg.what == 1){
-                if(rawX >= 45 && rawX <= 260 && rawY >= 690 && rawY <= 910){
-                    Message message = Message.obtain();
-                    message.what = 1;
-                    leave_handler_k.sendMessageDelayed(message,300);
-                }else{
-                    num_k = 0;
-                    flag = true;
-                    Message message = Message.obtain();
-                    message.what = 1;
-                    handler.sendMessageDelayed(message,0);
-                }
-            }
-        }
-    };
-    @SuppressLint("HandlerLeak")
-    Handler handler_l = new Handler(){
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            if(msg.what == 1){
-                if(num_l == 0){
-                    num_l++;
-                    Message message = Message.obtain();
-                    message.what = 1;
-                    handler_l.sendMessageDelayed(message,250);
-                }else if(num_l == 1){
-                    if(rawX >= 320 && rawX <= 535 && rawY >= 690 && rawY <= 910) {
-                        num_l++;
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        handler_l.sendMessageDelayed(message,250);
-                    }else{
-                        num_l = 0;
-                        flag = true;
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        handler.sendMessageDelayed(message,0);
-                    }
-                }else {
-                    if(rawX >= 320 && rawX <= 535 && rawY >= 690 && rawY <= 910) {
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        leave_handler_l.sendMessageDelayed(message,0);
-                        password += "l";
-                        num_pwd++;
-                        txt_input_show.setText("已输入"+num_pwd+"个字符");
-                    }else{
-                        num_l = 0;
-                        flag = true;
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        handler.sendMessageDelayed(message,0);
-                    }
-                }
-            }
-        }
-    };
-    @SuppressLint("HandlerLeak")
-    Handler leave_handler_l = new Handler(){
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            if(msg.what == 1){
-                if(rawX >= 320 && rawX <= 535 && rawY >= 690 && rawY <= 910){
-                    Message message = Message.obtain();
-                    message.what = 1;
-                    leave_handler_l.sendMessageDelayed(message,300);
-                }else{
-                    num_l = 0;
-                    flag = true;
-                    Message message = Message.obtain();
-                    message.what = 1;
-                    handler.sendMessageDelayed(message,0);
-                }
-            }
-        }
-    };
-    @SuppressLint("HandlerLeak")
-    Handler handler_m = new Handler(){
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            if(msg.what == 1){
-                if(num_m == 0){
-                    num_m++;
-                    Message message = Message.obtain();
-                    message.what = 1;
-                    handler_m.sendMessageDelayed(message,250);
-                }else if(num_m == 1){
-                    if(rawX >= 595 && rawX <= 810 && rawY >= 690 && rawY <= 910) {
-                        num_m++;
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        handler_m.sendMessageDelayed(message,250);
-                    }else{
-                        num_m = 0;
-                        flag = true;
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        handler.sendMessageDelayed(message,0);
-                    }
-                }else {
-                    if(rawX >= 595 && rawX <= 810 && rawY >= 690 && rawY <= 910) {
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        leave_handler_m.sendMessageDelayed(message,0);
-                        password += "m";
-                        num_pwd++;
-                        txt_input_show.setText("已输入"+num_pwd+"个字符");
-                    }else{
-                        num_m = 0;
-                        flag = true;
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        handler.sendMessageDelayed(message,0);
-                    }
-                }
-            }
-        }
-    };
-    @SuppressLint("HandlerLeak")
-    Handler leave_handler_m = new Handler(){
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            if(msg.what == 1){
-                if(rawX >= 595 && rawX <= 810 && rawY >= 690 && rawY <= 910){
-                    Message message = Message.obtain();
-                    message.what = 1;
-                    leave_handler_m.sendMessageDelayed(message,300);
-                }else{
-                    num_m = 0;
-                    flag = true;
-                    Message message = Message.obtain();
-                    message.what = 1;
-                    handler.sendMessageDelayed(message,0);
-                }
-            }
-        }
-    };
-    @SuppressLint("HandlerLeak")
-    Handler handler_n = new Handler(){
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            if(msg.what == 1){
-                if(num_n == 0){
-                    num_n++;
-                    Message message = Message.obtain();
-                    message.what = 1;
-                    handler_n.sendMessageDelayed(message,250);
-                }else if(num_n == 1){
-                    if(rawX >= 870 && rawX <= 1085 && rawY >= 690 && rawY <= 910) {
-                        num_n++;
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        handler_n.sendMessageDelayed(message,250);
-                    }else{
-                        num_n = 0;
-                        flag = true;
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        handler.sendMessageDelayed(message,0);
-                    }
-                }else {
-                    if(rawX >= 870 && rawX <= 1085 && rawY >= 690 && rawY <= 910) {
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        leave_handler_n.sendMessageDelayed(message,0);
-                        password += "n";
-                        num_pwd++;
-                        txt_input_show.setText("已输入"+num_pwd+"个字符");
-                    }else{
-                        num_n = 0;
-                        flag = true;
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        handler.sendMessageDelayed(message,0);
-                    }
-                }
-            }
-        }
-    };
-    @SuppressLint("HandlerLeak")
-    Handler leave_handler_n = new Handler(){
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            if(msg.what == 1){
-                if(rawX >= 870 && rawX <= 1085 && rawY >= 690 && rawY <= 910){
-                    Message message = Message.obtain();
-                    message.what = 1;
-                    leave_handler_n.sendMessageDelayed(message,300);
-                }else{
-                    num_n = 0;
-                    flag = true;
-                    Message message = Message.obtain();
-                    message.what = 1;
-                    handler.sendMessageDelayed(message,0);
-                }
-            }
-        }
-    };
-    @SuppressLint("HandlerLeak")
-    Handler handler_o = new Handler(){
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            if(msg.what == 1){
-                if(num_o == 0){
-                    num_o++;
-                    Message message = Message.obtain();
-                    message.what = 1;
-                    handler_o.sendMessageDelayed(message,250);
-                }else if(num_o == 1){
-                    if(rawX >= 1145 && rawX <= 1360 && rawY >= 690 && rawY <= 910) {
-                        num_o++;
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        handler_o.sendMessageDelayed(message,250);
-                    }else{
-                        num_o = 0;
-                        flag = true;
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        handler.sendMessageDelayed(message,0);
-                    }
-                }else {
-                    if(rawX >= 1145 && rawX <= 1360 && rawY >= 690 && rawY <= 910) {
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        leave_handler_o.sendMessageDelayed(message,0);
-                        password += "o";
-                        num_pwd++;
-                        txt_input_show.setText("已输入"+num_pwd+"个字符");
-                    }else{
-                        num_o = 0;
-                        flag = true;
-                        Message message = Message.obtain();
-                        message.what = 1;
-                        handler.sendMessageDelayed(message,0);
-                    }
-                }
-            }
-        }
-    };
-    @SuppressLint("HandlerLeak")
-    Handler leave_handler_o = new Handler(){
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            if(msg.what == 1){
-                if(rawX >= 1145 && rawX <= 1360 && rawY >= 690 && rawY <= 910){
-                    Message message = Message.obtain();
-                    message.what = 1;
-                    leave_handler_o.sendMessageDelayed(message,300);
-                }else{
-                    num_o = 0;
-                    flag = true;
-                    Message message = Message.obtain();
-                    message.what = 1;
-                    handler.sendMessageDelayed(message,0);
                 }
             }
         }
