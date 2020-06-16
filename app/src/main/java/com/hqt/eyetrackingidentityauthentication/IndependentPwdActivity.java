@@ -2792,7 +2792,7 @@ public class IndependentPwdActivity extends AppCompatActivity {
         user = sqliteImplementer.getLoginedUser();
         if((sqliteImplementer.getIndPwd(user.username) == null)){
             hav_indpwd = false;
-            AlertDialog alertDialog = new AlertDialog.Builder(IndependentPwdActivity.this).setCancelable(false).create();
+            AlertDialog alertDialog = new AlertDialog.Builder(IndependentPwdActivity.this).create();
             alertDialog.setIcon(R.drawable.img_warning);
             alertDialog.setTitle("提示");
             alertDialog.setMessage("此次为您第一次登陆，请选择若干个相应的字符作为独立密码");

@@ -138,7 +138,7 @@ public class ResetPwdActivity extends AppCompatActivity {
                     }
                 }else {
                     if(rawX >= 0 && rawX <= 1430 && rawY >= 295 && rawY <= 525) {
-                        AlertDialog alertDialog = new AlertDialog.Builder(ResetPwdActivity.this).setCancelable(false).create();
+                        AlertDialog alertDialog = new AlertDialog.Builder(ResetPwdActivity.this).create();
                         alertDialog.setIcon(R.drawable.img_warning);
                         alertDialog.setTitle("提示");
                         alertDialog.setMessage("确定要重置独立密码吗?");
@@ -216,7 +216,7 @@ public class ResetPwdActivity extends AppCompatActivity {
                     }
                 }else {
                     if(rawX >= 0 && rawX <= 1430 && rawY >= 605 && rawY <= 835) {
-                        AlertDialog alertDialog = new AlertDialog.Builder(ResetPwdActivity.this).setCancelable(false).create();
+                        AlertDialog alertDialog = new AlertDialog.Builder(ResetPwdActivity.this).create();
                         alertDialog.setIcon(R.drawable.img_warning);
                         alertDialog.setTitle("提示");
                         alertDialog.setMessage("确定要重置方向密码吗?");
@@ -294,7 +294,7 @@ public class ResetPwdActivity extends AppCompatActivity {
                     }
                 }else {
                     if(rawX >= 1120 && rawX <= 1430 && rawY >= 905 && rawY <= 1145) {
-                        AlertDialog alertDialog = new AlertDialog.Builder(ResetPwdActivity.this).setCancelable(false).create();
+                        AlertDialog alertDialog = new AlertDialog.Builder(ResetPwdActivity.this).create();
                         alertDialog.setIcon(R.drawable.img_warning);
                         alertDialog.setTitle("提示");
                         alertDialog.setMessage("确定要重置手势密码吗?");
