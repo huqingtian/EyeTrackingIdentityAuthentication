@@ -134,7 +134,7 @@ public class GesturePwdActivity extends AppCompatActivity {
             AlertDialog alertDialog = new AlertDialog.Builder(GesturePwdActivity.this).create();
             alertDialog.setIcon(R.drawable.img_warning);
             alertDialog.setTitle("提示");
-            alertDialog.setMessage("此次为您第一次登陆，请创建您的手势密码");
+            alertDialog.setMessage("此次为您第一次登陆，请创建您的眼势密码");
             alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "确定", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {

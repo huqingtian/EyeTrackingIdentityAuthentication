@@ -186,7 +186,7 @@
                         android:background="#FFFFFF"
                         android:textColor="#000000"
                         android:textSize="20sp"
-                        android:text="手势密码"/>
+                        android:text="眼势密码"/>
                 </FrameLayout>
                 <FrameLayout
                     android:layout_width="match_parent"

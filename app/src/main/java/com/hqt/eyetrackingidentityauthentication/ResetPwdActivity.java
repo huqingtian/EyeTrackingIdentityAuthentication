@@ -297,12 +297,12 @@ public class ResetPwdActivity extends AppCompatActivity {
                         AlertDialog alertDialog = new AlertDialog.Builder(ResetPwdActivity.this).create();
                         alertDialog.setIcon(R.drawable.img_warning);
                         alertDialog.setTitle("提示");
-                        alertDialog.setMessage("确定要重置手势密码吗?");
+                        alertDialog.setMessage("确定要重置眼势密码吗?");
                         alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "确定", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 sqliteImplementer.changeGesPwd(user.username, null);
-                                Toast.makeText(ResetPwdActivity.this, "重置手势密码成功", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(ResetPwdActivity.this, "重置眼势密码成功", Toast.LENGTH_SHORT).show();
                             }
                         });
                         alertDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "取消", new DialogInterface.OnClickListener() {
