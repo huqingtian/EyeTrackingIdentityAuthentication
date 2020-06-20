@@ -891,7 +891,7 @@ public class EyeTrackActivity extends AppCompatActivity {
         txt_tittle = findViewById(R.id.txt_tittle);
         if(user.etpwd == null){
             tag_EtPwd = 1;
-            txt_tittle.setText("请创建新的眼动密码");
+            txt_tittle.setText("请创建新的数字密码");
         }
         Message message = Message.obtain();
         message.what = 1;
@@ -922,7 +922,7 @@ public class EyeTrackActivity extends AppCompatActivity {
                 password = "";
                 showPwdNum();
             }else{
-                Toast.makeText(EyeTrackActivity.this, "眼动密码错误", Toast.LENGTH_SHORT).show();
+                Toast.makeText(EyeTrackActivity.this, "数字密码错误", Toast.LENGTH_SHORT).show();
                 number = 0;
                 password = "";
                 showPwdNum();

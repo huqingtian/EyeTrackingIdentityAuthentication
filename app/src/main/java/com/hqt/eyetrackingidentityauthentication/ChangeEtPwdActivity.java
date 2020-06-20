@@ -909,13 +909,13 @@ public class ChangeEtPwdActivity extends AppCompatActivity {
         String etpwd = user.etpwd;
         if(sec == 0){
             if(etpwd.equals(getMD5String(password))){
-                txt_change_tittle.setText("请输入新的眼动密码");
+                txt_change_tittle.setText("请输入新的数字密码");
                 number = 0;
                 password = "";
                 showPwdNum();
                 sec++;
             }else{
-                Toast.makeText(ChangeEtPwdActivity.this, "眼动密码错误", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ChangeEtPwdActivity.this, "数字密码错误", Toast.LENGTH_SHORT).show();
                 number = 0;
                 password = "";
                 showPwdNum();
@@ -926,7 +926,7 @@ public class ChangeEtPwdActivity extends AppCompatActivity {
                 }
             }
         }else{
-            Toast.makeText(ChangeEtPwdActivity.this, "眼动密码修改成功", Toast.LENGTH_SHORT).show();
+            Toast.makeText(ChangeEtPwdActivity.this, "数字密码修改成功", Toast.LENGTH_SHORT).show();
             sqliteImplementer.changeETPwd(username, getMD5String(password));
             finish();
         }

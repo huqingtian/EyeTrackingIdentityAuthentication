@@ -892,7 +892,7 @@ public class ComfirmEtActivity extends AppCompatActivity {
             setResult(111);
             finish();
         }else{
-            Toast.makeText(ComfirmEtActivity.this, "眼动密码错误", Toast.LENGTH_SHORT).show();
+            Toast.makeText(ComfirmEtActivity.this, "数字密码错误", Toast.LENGTH_SHORT).show();
             number = 0;
             password = "";
             showPwdNum();
